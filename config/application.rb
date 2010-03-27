@@ -27,6 +27,8 @@ Refinery::Initializer.run do |config|
   # Specify your application's gem requirements here. See the example below:
   config.gem "refinerycms-news", :lib => "news", :version => "~> 0.9.7"
   # config.gem "refinerycms-portfolio", :lib => "portfolio", :version => "~> 0.9.3.8"
+  config.gem "factory_girl", :source => "http://gemcutter.org"
+  config.gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.github.com"
 end
 
 # You can set things in the following file and we'll try hard not to destroy them in updates, promise.
