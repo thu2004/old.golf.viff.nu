@@ -1,0 +1,64 @@
+8
+
+dir
+229
+svn://family-le.com/viff_section/trunk/test/factories
+svn://family-le.com
+
+
+
+2010-03-26T23:48:51.671406Z
+226
+thu
+
+
+svn:special svn:externals svn:needs-lock
+
+option_factory.rb
+file
+
+
+
+
+2010-03-26T21:18:15.000000Z
+3c9f8c19783a8f93b68fe66c1438d052
+2010-03-26T23:48:51.671406Z
+226
+thu
+
+user_factory.rb
+file
+
+
+
+
+2010-03-26T19:39:05.000000Z
+1d73cb4fd29231d892d9a5015d1f2b26
+2010-03-26T23:48:51.671406Z
+226
+thu
+
+magazine_rental_factory.rb
+file
+
+
+
+
+2010-03-26T19:44:52.000000Z
+c9b795f37d6ed475cd1f8f3e97116d26
+2010-03-26T23:48:51.671406Z
+226
+thu
+
+event_factory.rb
+file
+
+
+
+
+2010-03-26T20:43:16.000000Z
+8448d17cc3e6fd71a3db9bfbc448e922
+2010-03-26T23:48:51.671406Z
+226
+thu
+

@@ -1,0 +1,41 @@
+﻿<div class="content_panel">
+  <h1>Alla utestående lån</h1>
+  <table>
+  	<tr>
+  		<th><%= link_to "Låntagare", :action => "show_rentals", :sort_by => "name" %></th>
+  		<th><%= link_to "Tidning", :action => "show_rentals", :sort_by => "magazine" %></th>
+  		<th><%= link_to "Låndatum", :action => "show_rentals", :sort_by => "rent_on" %></th>
+  		<th>Kö</th>
+  		<th><%= link_to "Dagar", :action => "show_rentals", :sort_by => "rent_on" %></th>  	
+  		<% if current_user.magazine_admin? || current_user.admin? %>
+        <th>På</th>
+        <th>Påminnelse</th>
+        <th>Försvunnit</th>
+      <% end %>     
+  	</tr>
+  	<% @rentals.each do |r| %>
+  	<tr class="<%= cycle('odd','even') -%>">
+  		<td class="alter"><%= h(r.user.name) %></td>
+  		<td class="alter"><%= h(r.magazine_item.full_name) %></td>
+  		<td class="alter"><%= r.rent_on %></td>
+  		<% 
+  		queue_size = r.magazine_item.magazine_number.rental_queues.size
+  		num_mag = r.magazine_item.magazine_number.num_of_copy
+  		
+  		queue_size = num_mag if (queue_size > 0 && queue_size < num_mag) 
+  		queue_size = queue_size / num_mag if (queue_size != 0)
+  		%>
+  		<td class="alter"><%= queue_size %></td>
+  		<td class="alter"><%= Date.today - r.rent_on %></td>
+  		
+  		<% if current_user.magazine_admin? || current_user.admin? %>
+        <td><%= Date.today - r.last_remind_date %></td>
+        <td><%= link_to "Skicka", { :action => "send_rental_remind", 
+          :rental_id => r.id}, :method => :post %></td>
+        <td><%= link_to "Ta bort", { :action => "remove_rental",
+          :rental_id => r.id}, :method => :post %></td>
+      <% end %>     
+  	</tr>
+  	<% end %>
+  </table>
+</div>

@@ -1,0 +1,7 @@
+﻿Hej <%= @rental.user.name %>!
+
+Du har lånat tidningen <%= @rental.magazine_item.full_name %> i <%= Date.today - @rental.rent_on %> dagar. Det är dags att skicka tidningen vidare till andra medlemmar.
+ 
+mvh
+
+/<%= Option.get("section")%>

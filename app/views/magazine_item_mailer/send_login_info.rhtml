@@ -1,0 +1,12 @@
+﻿Hej <%= @user.name %>!
+
+Detta är en automatiskt E-post utskick från <%= Option.get("section")%>. 
+
+Här är din tillfällig inloggningsuppgifter. Du bör byta lösenord när du har loggat in.
+
+Användarnamn : <%= @user.login %> 
+Lösenord: <%= @user.password %>
+
+mvh
+
+/<%= Option.get("section")%>

@@ -1,0 +1,11 @@
+﻿Hej <%= @user.name %>!
+
+Detta är en automatik email utskick från <%= Option.get("section")%>. 
+
+Det finns en läsare som har vill låna tidningen <%= @magazine_number.full_name%> som du har lånat.
+
+När du har läst färdig tidningen, kan du kan skicka vidare till nästa läsare i kö genom att besöka <%= Option.get("Url")%><%= url_for(:controller => "rental", :action => "index")%>
+ 
+mvh
+
+/<%= Option.get("section")%>

@@ -1,0 +1,24 @@
+﻿<div id="rental-subscriptions-form" class="content_panel">
+	<h1>Prenumerera på en tidning</h1>
+  <% if @magazine_subscriptions.size > 0 %>
+    <p>Du kan prenumerera på följnade tidningar.</p>
+  
+    <table>
+      <tr>
+        <th class="first" width="80%">Tidning</th>
+        <th>&nbsp;</th>
+      </tr>
+      <% @magazine_subscriptions.each do | ms | %>
+        <tr> 
+          <td class="first"><%= ms.name %> </td>
+          <td class="last"><%= link_to "Lägg till", {:action => "add_rental_subscription", :id => ms.id}, 
+                       :method => :post%></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p>Det finns inte fler tidning att prenumera.</p>
+  <% end %>
+  <p/>
+  <p><%= link_to "Klick här för komma tillbaka till huvud sidan", :action => "index" %></p>
+</div>

@@ -1,0 +1,46 @@
+﻿<div id="add-new-magazine-item-form" class="content_panel">
+	<h1>Lägga till en ny tidning</h1>
+	<div class="error_box">
+	  <%= error_messages_for 'magazine_number'%>
+	</div>
+	<% form_tag :action => 'add_new_magazine_number' do %>
+	 	<p>
+    	<label>Namn:</label>
+      <%=  text_field_tag :name, params[:name] %>
+      format "åååå nr nn" tex "2007 nr 1"
+    </p>
+    <p>
+    	<label>Prenumeration:</label>
+    <%= 
+    	select_tag(:magazine_subscription_name,
+    	options_for_select(@magazine_subscription_names,
+    	   	params[:magazine_subscription_name])) %>
+		</p>
+		<p>
+    	<label>Antal exemplar:</label>
+      <%=  text_field_tag :num_of_copy, params[:num_of_copy] %>
+    </p>
+<!--
+    <p>
+    	<label>Skicka ut e-post:</label>
+    	<input type="checkbox" id="email_notification" name="email_notification" 
+    	value="1" />
+    </p>
+-->
+    <p>
+    	<label>Lägga automatisk i kö:</label>
+    	<input type="checkbox" id="auto_add_rental_queue" name="auto_add_rental_queue" 
+    	value="1" checked="checked"/>
+    </p>
+  	<p>
+      <label>&nbsp;</label><%= submit_tag 'Spara' %>
+    </p>
+	<% end %>
+  <p/>
+  <p class="info">
+  	När du har registrerad en tidning så kommer den att läggas som utlånad till dig. Du kan sedan skicka den vidare till de andra läsarna. <br/><br/>
+  	Om "Skicka ut e-post" är valt så skickas ett meij automatiskt till de läsare som prenumererar på tidningen.<br/><br/>
+  	Om "Lägga automatisk i kö" är valt så läggas tidningen i kö automatiskt för de läsare som prenumererar på todningen. 
+  </p>
+  <p><%= link_to "Klick här för komma tillbaka till huvud sidan", :action => "index" %></p>
+</div>

@@ -1,0 +1,64 @@
+<div id="future_events" class="content_panel">
+	<h1>Kommande aktiviteter</h1>
+	
+	<% if @future_events.size == 0 %>
+	<p>Det finns inga kommande aktiviteter. </p>
+	<% end %>
+	
+	<% @future_events.each do |event| %>
+		<div class="event_entry">
+			<h2><%= event.name %></h2>
+			<p><%= event.description %></p>
+			<p>Information finns här <%= event.info_link %>
+			<ul>
+				<li>Start datum : <%= event.start_date%></li>
+				<li>Slut datum : <%= event.end_date %></li>
+				<li>Max antal deltagare : <%= event.max_participant %></li>
+				<li>Antal anmälda deltagare : <%= event.users.size %> 
+			</ul>
+			<% if current_user.join_event?(event) %>
+			  <p>Du är anmäld. <%= link_to("Klick här för att avregistrerar dig", {:action => "remove_participant", 
+			  	  :event_id => event.id}, :method => :post) %>
+			  </p>
+			<% else %>
+				<p><%= link_to("Klick här fär att registrera dig", {:action => "add_participant", 
+					 :event_id => event.id}, :method => :post) %>
+				</p>
+			<% end %>
+			
+			<% if event.users.size > 0 %>
+				<h3>Deltagar listan </h3>
+				<ol>
+				<% event.users.each do | user | %>
+					<li><%= user.name %> </li>
+				<% end %>
+				</ol>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+
+<div id="past_events" class="content_panel">	
+	<h1>Äldre aktiviteter</h1>
+	
+	<% if @past_events.size == 0 %>
+	<p>Det finns inga gamla aktiviteter. </p>
+	<% end %>
+	
+	<% @past_events.each do |event| %>
+		<div class="event_entry">
+			<h2><%= event.name %></h2>
+			<p><%= event.description %></p>
+			<p>Information finns här <%= event.info_link %>
+			<ul>
+				<li>Start datum : <%= event.start_date%></li>
+				<li>Slut datum : <%= event.end_date %></li>
+				<li>Max antal deltagare : <%= event.max_participant %></li>
+				<li>Antal anmälda deltagare : <%= event.users.size %> 
+			</ul>
+			<% if current_user.join_event?(event) %>
+			  <p>Du var med denna aktiviet</p>
+			<% end %>
+		</div>
+	<% end %>
+</div>

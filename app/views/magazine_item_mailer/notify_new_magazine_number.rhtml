@@ -1,0 +1,11 @@
+﻿Hej !
+
+Detta är en automatik email utskick från <%= Option.get("section")%>. 
+
+En ny tidning '<%= @magazine_number.full_name %>' har lagt till i systemet.
+
+Du kan låna den genom att lägga den i din tidning-kö genom att besöka <%= Option.get("Url")%><%= url_for(:controller => "rental", :action => "index")%>
+
+mvh
+
+/<%= Option.get("section")%>

@@ -1,0 +1,27 @@
+﻿<div id="rental-queues-form" class="content_panel">
+	<h1>Lägga till en tidning i kön</h1>
+  <% if @magazine_numbers.size > 0 %>
+    <p>
+      Du kan välja följande tidningar.
+    </p>
+    <table>
+      <tr>
+        <th width="30%">Tidning</th>
+        <th width="50%">Nummer</th>
+        <th>&nbsp;</th>
+      </tr>
+      <% @magazine_numbers.each do | magazine_number | %>
+        <tr> 
+        	<td class="first"><%= magazine_number.magazine_subscription.name%>
+          <td><%= magazine_number.name %> </td>
+          <td class="last"><%= link_to "lägga till", {:action => "add_rental_queue", :id => magazine_number.id}, 
+                       :method => :post%></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p>Det finns inte fler tidning nummer.</p>
+  <% end %>
+  <p/>
+  <p><%= link_to "Klick här för komma tillbaka till huvud sidan", :action => "index" %></p>
+</div>

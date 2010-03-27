@@ -1,0 +1,21 @@
+﻿<div class="content_panel">
+  <h1>Alla tidning som har läsare i kö</h1>
+  <table>
+  	<tr>
+  		<th>Namn</th>
+  		<th>Antal</th>
+  		<th>Kölistan</th>
+  	</tr>
+  	<% @magazines.each do |m| %>
+  	<tr class="<%= cycle('odd','even') -%>" >
+  		<td><%= h(m.full_name) %></td>
+  		<td><%= m.rental_queues.size%></td>
+  		<td>
+  			<% m.rental_queues.each do |rq|%>
+  			 <%= h("#{rq.user.name},") %>
+  			<% end %>
+  		</td>
+  	</tr>
+  	<% end %>
+  </table>
+</div>

@@ -1,0 +1,19 @@
+﻿<div class="content_panel">
+  <h1>Alla medlemmar</h1>
+  <table>
+  	<tr>
+  		<th><%= link_to "Namn", :action => "show_user_rentals", :sort_by => "name" %></th>
+  		<th><%= link_to "Nuvarande lån", :action => "show_user_rentals", :sort_by => "rental" %></th>
+  		<th>Betalat</th>
+  		<th><%= link_to "Lånat", :action => "show_user_rentals", :sort_by => "rental_history" %></th>
+  	</tr>
+  	<% @users.each do |u| %>
+  	<tr class="<%= cycle('odd','even') -%>" >
+  		<td class="alter"><%= h(u.name) %></td>
+  		<td class="alter"><%= u.rentals.size %></td>
+  		<td class="alter"><%= u.paid %></td>
+  		<td class="alter"><%= u.rental_histories.size %></td>
+  	</tr>
+  	<% end %>
+  </table>
+</div>

@@ -1,0 +1,16 @@
+﻿Hej <%= @current_user.name %>!
+
+Detta är en automatik email utskick från <%= Option.get("section")%>
+
+Du har valt skicka vidare tidningen <%= @magazine_item.full_name%> till <%= @new_user.name %>.
+
+Här är information om den nya läsare.
+  
+Namn    : <%= @new_user.name %> 
+Email   : <%= @new_user.email %> 
+Företag : <%= @new_user.company %>
+Byggnad : <%= @new_user.location %>  
+
+mvh
+
+/<%= Option.get("section")%>

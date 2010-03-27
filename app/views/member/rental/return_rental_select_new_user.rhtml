@@ -1,0 +1,43 @@
+﻿<div id="return-rental-form" class="content_panel">
+  <h1>Skickar vidare - välja nästa läsaren</h1>
+  <h2>Tidningen som ska skickas är <%= @magazine_item.full_name %></h2>
+  <% if @rental_queues.size > 0 %>
+    <p class="info">Här är kö listan. Vad god välja en läsare att skicka vidare tidningen.</p>
+    <p>
+    Du ser hur många tidningar en person har hemma just nu, om medlemsavgift är redan betalt</p> 
+    <p>
+      <strong>
+        OBS ! Inte förrän du har klickat på "Skicka" och svarat "ja" på dialogboxen, avregisterar systemet lånet. Du kommer då få ett email som bekräftar ditt lån är avregistrerad.
+      </strong>
+    </p>
+    <table width="100%">
+      <tr>
+        <th class="first" width="30%">Namn</th>
+        <th width="20%">Företag</th>
+        <th width="5%">Lån</th>
+        <th width="5%">Betalt</th>
+        <!-- th width="15%">Datum</th -->
+        <th>&nbsp;</th>
+      </tr>
+      <% @rental_queues.each do | rental_queue | %>
+        <tr class="<%= cycle('odd','even') -%>"> 
+          <td class="alter"><%= rental_queue.user.name %> </td>
+          <td class="alter"><%= rental_queue.user.company %></td>
+          <td class="alter"><%= rental_queue.user.rentals.size%></td>
+          <td class="alter"><%= rental_queue.user.paid ? "ja" : "nej"%></td>
+          <td class="alter"><%= link_to "Skicka", {:action => "return_rental_final", 
+             :new_user_id => rental_queue.user.id, 
+             :magazine_item_id => @magazine_item.id},
+             :confirm => "Tidningen kommer att skicka till #{rental_queue.user.name} \nÄr du säker ?",
+             :method => :post%></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <br/>
+    <p class="info">Det finns inte läsare på kö-listan. Om du vill kan du behålla tidningen hos dig så länge. Du kommer att få ett meij när det finns en läsare som vill låna tidningen.</p>
+    <p>Du kan också skicka tillbaka tidningen till tidningsansvarig.<p/>
+   <% end %>
+   <br/>
+  <p><%= link_to "Klick här för komma tillbaka till huvud sidan", :action => "index" %></p>
+</div>

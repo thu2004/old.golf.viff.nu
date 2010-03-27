@@ -1,0 +1,50 @@
+<%= error_messages_for 'user' %>
+<div id="update_form" class="content_panel">
+  <div id="form_inner">
+    <h1>Uppdatera konto</h1>
+    <br />
+      <% form_for :user do |f| -%>
+      <p>
+      	<label>Inloggning:</label>
+        <%=  f.text_field :login, :size => 40 %>
+      </p>
+      <p>
+      	<label>Förnamn:</label>
+        <%= f.text_field :first_name, :size => 40 %>
+      </p>
+      <p>
+      	<label>Efternamn:</label>
+        <%= f.text_field :last_name, :size => 40 %>
+      </p>
+      <p>
+      	<label>Lösenord:</label>
+        <%= f.password_field :password, :size => 40 %>
+      </p>
+      <p>
+        <label>Verifiera lösenord:</label>
+        <%= f.password_field :password_confirmation, :size => 40 %>
+      </p>
+      <p>
+      	<label>E-post:</label>
+        <%= f.text_field :email, :size => 40 %>
+      </p>
+      <p>
+      	<label>Mobil:</label>
+        <%= f.text_field :mobile_phone, :size => 40 %>
+      </p>
+      <p>
+      	<label>Företag:</label>
+        <%= f.text_field :company, :size => 40 %>
+        (Ericsson, SonyEricsson)
+      </p>
+      <p>
+      	<label>Byggnad:</label>
+        <%= f.text_field :location, :size => 40 %>
+        (ex. Delta 3 room 2111, VT Greenland room 111)
+      </p>      		        
+      <p>
+        <label>&nbsp;</label><%= submit_tag 'Uppdatera' %>
+      </p>
+    <% end -%>
+  </div>
+</div>

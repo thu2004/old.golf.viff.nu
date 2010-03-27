@@ -1,0 +1,21 @@
+﻿<div class="content_panel">
+  <h1>Alla tidning prenumeration och antal läsare</h1>
+  <table>
+  	<tr>
+  		<th>Namn</th>
+  		<th>Antal</th>
+  		<th>Läsare</th>
+  	</tr>
+  	<% @magazine_subscriptions.each do |m| %>
+  	<tr class="<%= cycle('odd','even') -%>" >
+  		<td><%= h(m.name) %></td>
+  		<td><%= m.rental_subscriptions.size %></td>
+  		<td>
+  		   <% m.rental_subscriptions.each do |rs|%>
+  			 <%= h("#{rs.user.name},") %>
+  			<% end %>
+  		</td>
+  	</tr>
+  	<% end %>
+  </table>
+</div>

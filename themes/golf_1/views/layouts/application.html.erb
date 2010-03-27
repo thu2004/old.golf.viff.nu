@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <% content_for :head do %>
+      <%= stylesheet_link_tag "blueprint/screen" , :theme => true  %>
+      <%= stylesheet_link_tag "blueprint/print" , :theme => true, :media => "print"  %>
+      <%= stylesheet_link_tag "my" , :theme => true %>
+  <% end %>
+  <%= render :partial => "/shared/head", :locals => {:theme => true} %>
+   <body>
+    <%= render :partial => "/shared/ie6check" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+    <div id='page_container' class="container _showgrid_">
+      <div id='page' class='clear'>
+        <div id='header'>
+          <div id='header_content'>
+            <div class='column span-12'>
+              <h1><%= link_to RefinerySetting[:site_name], root_url %></h1>
+            </div>
+            <div class='column span-12 last'>
+              <%= render :partial => "/shared/menu" %>
+            </div>
+          </div>
+        </div>
+        <div id='body' class='clear'>
+          <%= yield %>
+        </div>
+        <hr/>
+        <div id='footer' class='clear'>
+          <%= render :partial => "/shared/footer" %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

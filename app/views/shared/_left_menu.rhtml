@@ -1,0 +1,51 @@
+﻿<div class="navcontainer">
+	<h3>Medlemstjänster</h3>				
+		<ul>
+			<li><%= link_to "Aktiviteter", :controller => "/member/event" %></li>
+	  	<li><%= link_to "Förmån", :controller => "/member/benefit" %></li>
+	  	<li><%= link_to "Spelrätter", :controller => "/member/playright" %></li>	
+  		<li><%= link_to "Tidningscirkulering", :controller => "/member/rental" %></li>	
+    
+			<% if logged_in? %>
+			  <li><br/><%= link_to "Uppdatera konto", :controller => "/member/account", :action => "update" %></li>			    
+			<% end %>
+    </ul>
+</div>
+	  
+	<div class="navcontainer">
+		<h3>Statistik</h3>
+		<ul>
+				<li><%= link_to "Alla lån", :controller => "/member/rental/show_rentals" %></li>
+				<li><%= link_to "Alla lån historik", :controller => "/member/rental/show_rental_histories" %></li>
+				<li><%= link_to "Alla medlemmar", :controller => "/member/rental/show_user_rentals"%></li> 		            
+<% if logged_in? && (current_user.admin? || current_user.magazine_admin?) %>
+        <li><%= link_to "Tidning prenum", :controller => "/member/rental/show_magazine_subscriptions" %></li>
+        <li><%= link_to "Tidning med kö", :controller => "/member/rental/show_magazines" %></li><br/>
+          <hr/><br/>
+				<li><%= link_to "Medlems epost", :controller => "/member/users" %></li>
+<% end %>		
+				</ul>
+	</div>
+
+<% if logged_in? && current_user.admin? %>
+	<div class="navcontainer">
+		<h3>Administration</h3>
+		<ul>
+				<li><%= link_to "Admin public site", :controller => "/admin/dashboard" %><br/></li>
+		    <li><%= link_to "Events", :controller => "/admin_db/event" %></li><br/>
+		    <li><%= link_to "Members fee", :controller => "/admin_db/user", :action => "receive_payment"%><br/></li>
+            <hr/><br/>
+        <li><%= link_to "Options", :controller => "/admin_db/option" %></li>
+		    <li><%= link_to "Users", :controller => "/admin_db/user" %></li>
+		    <li><%= link_to "Roles", :controller => "/admin_db/role" %><br/></li>
+		    <li><%= link_to "Change current user", :controller => "/admin_db/user", :action => "change_user"%><br/></li>
+        <hr/><br/>
+		    <li><%= link_to "Magazine numbers", :controller => "/admin_db/magazine_number" %></li>	
+		    <li><%= link_to "Magazine items", :controller => "/admin_db/magazine_item" %></li>	
+		    <li><%= link_to "Magazine subscriptions", :controller => "/admin_db/magazine_subscription" %></li>	
+		    <li><%= link_to "Rentals", :controller => "/admin_db/rental" %></li>	
+		    <li><%= link_to "Rental queues", :controller => "/admin_db/rental_queue" %></li>	
+		    <li><%= link_to "Rental subscriptions", :controller => "/admin_db/rental_subscription" %></li>	
+		</ul>
+	</div>
+<% end %>		

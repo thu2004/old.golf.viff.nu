@@ -1,0 +1,108 @@
+﻿<div id="rental-page">
+  
+  <!-- RENTAL-INFO -->
+  
+  <div id="rental-info" class="content_panel">
+    <h1>Mina lån</h1>
+    <% if current_user.rentals.size == 0 %>
+        <p class="info">Du har inga lån</p>
+    <% else %>    
+      <p class="info">Du har följande lån. Om du vill lämna tillbaka en tidning genom att skicka den till nästa läsare på cirkulationslistan, klicka på "Skicka vidare".</p>
+      <table>
+        <tr>
+          <th class="first" width="30%">Tidning</th>
+	        <th width="30%">Nummer</th>
+          <th width="20%">Lån datum</th>
+          <% if current_user.magazine_admin? %>
+          <th>&nbsp;</th>
+          <% end %>
+          <th>&nbsp;</th>
+        </tr>
+        <%current_user.rentals.each do | r | %>
+        <tr> 
+	        <td class="first"><%= h(r.magazine_item.magazine_number.magazine_subscription.name) %></td>
+          <td><%= h(r.magazine_item.magazine_number.name) %></td>
+          <td><%= r.rent_on %></td>
+          <% if current_user.magazine_admin? %>
+            <td>
+            <%= link_to "Ta bort", {:action => "remove_rental",
+                    :rental_id => r.id}, :method => :post %>    
+            <%= "(#{r.magazine_item.magazine_number.rental_queues.size})"%>
+            </td>
+          <% end %>
+          <td class="last"><%= link_to "Skicka vidare", {:action => "return_rental_select_new_user", 
+                    :magazine_item_id => r.magazine_item.id}, :method => :post%></td>
+        </tr>
+        <%end %>
+      </table>
+    <% end %>
+    <p/>
+    <% if current_user.magazine_admin? %>
+      <p>Om du har en tidning som inte är registrerad i systemet, kan du <%= link_to "lägga in den här", :action => "add_new_magazine_number" %>.</p>
+    <% end %>
+  </div>
+
+  <!-- RENTAL-SUBSCRIPTIONS -->
+  
+  <div id="rental-subscriptions" class="content_panel">
+    <h1>Mina prenumerationer</h1>
+    <p class="info">Om du prenumerar på en tidning, kommer du automatik få nya tidning nummer i din tidning-kö när ett nytt nummer av tidning har kommit. Du kan också lägga in gamla tidningen i din kö-listan.</p>
+    <% if current_user.rental_subscriptions.size == 0 %>
+        <p class="info">Du har inga prenumerationer. <%= link_to "Klick här för att prenumerera på en tidning", :action => "add_rental_subscription" %></p>
+    <% else %>
+        <p>Du har följande prenumeration. Om du vill ta bort en prenumeration, klicka på "ta bort".</p>
+      <table>
+      <tr>
+        <th class="first" width="80%">Tidning</th>
+        <th>&nbsp;</th>
+      </tr>
+    <%   current_user.rental_subscriptions.each do | rs | %>
+           <tr>
+              <td class="first"><%= h(rs.magazine_subscription.name) %></td>
+              <td class="last"><%= link_to "Ta bort", {:action => "remove_rental_subscription", :id => rs.magazine_subscription.id}, 
+                     :confirm => "Är du säker du vill ta bort prenumeration  h('#{rs.magazine_subscription.name}') ?", :method => :post%></td>
+          </tr>
+    <%   end %>           
+      </table>
+      <p/>
+      <% sub_left = @magazine_subscriptions.size - current_user.rental_subscriptions.size %>
+      <% if sub_left > 0 %>
+          <p> Det finns ytterligare <%= sub_left %> tidningar du kan prenumerar.  
+          <%= link_to "Klick här för att lägga till...", :action => "add_rental_subscription" %>
+          </p>
+      <% end %>
+    <% end %>    
+  </div>  
+  
+  <!-- RENTAL-QUEUES -->
+  
+  <div id="rental-queues" class="content_panel">
+    <h1>Min kö</h1>
+    <% if current_user.rental_queues.size == 0 %>
+         <p class="info">Du har ingen tidning i din kö.</p>
+    <% else %>
+      <p class="info">Du har följande tidningar i din kö.</p>
+      <table>
+        <tr>
+          <th class="first" width="30%">Tidning</th>
+          <th width="30%">Nummer</th>
+          <th  width="20%">Datum</th>
+          <th>&nbsp;</th>
+        </tr>
+      <%   current_user.rental_queues.each do | q | %>
+           <tr>
+              <td class="first"><%= h(q.magazine_number.magazine_subscription.name) %></td>
+       		    <td><%= h(q.magazine_number.name) %></td>
+              <td><%= q.created_at.strftime("%y-%m-%d")%></td>
+              <td class="last"><%= link_to "Ta bort", {:action => "remove_rental_queue", :id => q.id}, 
+                       :confirm => "Är du säker du vill ta bort tidningen h('#{q.magazine_number.full_name}') från din kö ?", :method => :post%></td>
+           </tr>
+      <%   end %>
+      </table>
+    <% end %>
+    <p/>
+    <p>
+    <%= link_to "Lägga till tidning i din kö", :action => "add_rental_queue" %>
+    </p>
+  </div>    
+</div> 

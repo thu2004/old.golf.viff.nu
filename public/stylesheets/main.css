@@ -1,0 +1,277 @@
+/* --- generic styles */
+
+html, body { color: #333; font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif; background-color: #fff; text-align: center; margin: 0; height: 100% }
+
+a {
+	text-decoration: none;
+}
+
+a img {
+	border: 0;
+}
+
+p {
+	margin: 0 0 1em;
+}
+
+/* container styles */
+#container {
+	margin: 0px auto;
+	text-align: left;
+	max-width:990px; 
+	min-width:800px;
+	background: #E2EDC2;
+}
+
+/* ----------- head styles ---------- */
+
+#header {
+	margin-bottom: 1.75em; padding-top: 1px;
+	background: #ABD240;
+}
+ 
+#header h1 {
+	margin: 0;
+	padding: 0.5em 0.5em;
+}
+
+#homelink {
+	display: block;
+	margin: 1em 2em 1em;
+	padding: 2em 0 0.5em 1em;
+}
+
+#navlinks {
+	margin: 0; padding: 0.5em 3em;
+	background: #686397; color: #FFF;
+}
+
+#navlinks li {
+	display: inline;
+	margin-right: 0.5em;
+	padding-right: 0.75em;
+	border-right: 1px solid #99C;
+	font-weight: bold;
+}
+
+#navlinks li.last {
+	border-right: 0;
+}
+
+#navlinks a {
+	color: #D4EC84;
+}
+
+#navlinks a:hover {
+	color: #9B96CA;
+	text-decoration: none;
+}
+
+#navlinks li.welcome_user {
+	padding-left: 20em;
+	color: #FFF;
+	font-weight: bold;
+	/* 
+	text-align: right;
+	line-height: 1;
+	*/
+	border-right: 0;
+}
+
+#membership_paid {
+ float: right;
+ color: #FFF;
+ margin-top: -1.5em;
+ margin-right: 2em;
+}
+
+/* ------------- sidebar --------------- */
+
+#sidebar {
+	float: left;
+	width:135px;
+	margin: 0 0 1em 1em;
+}
+
+#sidebar form, #sidebar div h3 {
+	background: #686397;
+}
+
+#sidebar form .text {
+	width: 9em;
+}
+
+#sidebar div {
+	background: #3A3C2D; color: #FFF;
+	padding: 0 1em 1em;
+	margin-top: 0.75em;
+}
+
+#sidebar div h3 {
+	font-size: 1em;
+	margin: 0 -1em;
+	padding: 0.3em 0.58em;
+}
+
+#sidebar ul {
+	margin: 0;
+	padding: 1em 0 0 0;
+	list-style-type: none;
+	font-weight: bold;
+	letter-spacing: 1px;
+	font-size: 0.8em; 
+}
+
+#sidebar a {
+	display: block;
+}
+
+#sidebar a:link, .navcontainer a:visited {	
+	color: #D4EC84;
+	text-decoration: none;
+}
+
+#sidebar a:hover {
+	color: #9B96CA;
+	text-decoration: none;
+}
+
+#sidebar li a#current {
+	color: #A5003B;
+	text-decoration: none;
+}
+
+/* ------------ content ------------- */
+
+#content {
+	float: left;
+	margin: 0 0 0em 1em;
+	border-left: 1px solid #99C;
+	width: 80%;
+}
+
+#content_inner {
+	margin: 0em 0em 0em 1em;
+}	
+
+#flash_notice {
+	margin: 1em 0em;
+	padding: 2em;
+	border: 1px;
+	background-color: #CCCC00;
+}
+
+#flash_error {
+	margin: 1em 0em;
+	padding: 2em;
+	border: 1px;
+	background-color: #CC0000;
+	color: #FFFFFF;
+}
+
+.content_panel {
+	border: 1px solid #99C;	
+	margin-bottom: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.content_panel h1 {
+	background: #686397; color: #FFF;
+	font-size: 1.4em;
+	margin-top: 0;
+	margin-left: -0.8em;
+	margin-right: -0.8em;
+	padding: 0.4em 0.8em;
+}
+
+.content_panel h2 {
+	font-size: 1.4em;
+	border-bottom: 1px solid #99c;
+}
+
+.content_panel h3 {
+	font-size: 1.2em;
+}
+
+.content_panel p {
+	padding: 0.4em 0.4em;
+}
+
+.content_panel p.info {
+	/* background-color: #AABB33; */
+}
+
+.content_panel table {
+	padding: 0.4em 0.4em;
+	width: 100%;
+}
+
+.content_panel th {
+	/* border-bottom: 1px solid #99C;*/
+	background-color: #aabb33;
+}
+
+.content_panel td {
+	border-bottom: 1px dotted #99C;
+}
+
+.content_panel td.first {
+	border-bottom: 1px dotted #99C;
+  border-left: 1px dotted #99C;	
+}
+
+.content_panel td.last {
+	border-bottom: 1px dotted #99C;
+	border-right: 1px dotted #99c;
+}
+
+.content_panel td.alter {
+	border-bottom: none;
+}
+
+.content_panel a {
+	text-decoration: none; 
+}
+
+.content_panel label {
+	/* display:block; */
+	clear: right;
+	float: left;
+	font-weight:bold;
+	margin:5px 5px 0 0;
+	width: 13em;
+	text-align: right;
+}
+
+.content_panel input {
+	border:1px solid #99C;
+	padding: 3px;
+	font: normal 1em 'Trebuchet MS', verdana, sans-serif;
+	color:#777;
+}
+
+th { background-color: #99C; color: #fff; }
+tr.odd { background-color: #E6F2FF; }
+tr.even { background-color: #ffffff; }
+
+.error_box {
+	background-color: #AABB33;
+}
+
+tr.no-circular {
+  background-color: #aaa;
+}
+
+/* footer */
+
+#footer {
+	clear: both;
+	padding: 0.5em 2em 1.0em 2em;
+	background: #ABD240; 
+}
+
+#footer p {
+	margin: 0;
+	text-align: center;
+}

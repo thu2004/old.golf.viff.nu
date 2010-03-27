@@ -1,0 +1,17 @@
+﻿<div id="return-rental-form" class="content_panel">
+  <h1>Skicka vidare - Bekräftelse</h1>
+  <p>Ett meij har skickat till <%= @new_user.name %> att tidningen 
+  '<%= @magazine_item.full_name%>' kommer snart. </p>
+  <p>Du har också fått ett bekräftelse via e-post med information om <%= @new_user.name %>.</p>
+  <p>Här är information om den nya läsare.</p>
+  <p>
+  Email    : <%= @new_user.email %> <br/>
+  
+  Namn     : <%= @new_user.name %> <br/>
+  Byggnad  : <%= @new_user.location %><br/>
+  Företag  : <%= @new_user.company %><br/>
+  </p>
+  <p>Vad god skicka tidningen via internpost till den nya läsaren.</p>
+
+  <p><%= link_to "Klick här för komma tillbaka till huvud sidan", :action => "index" %></p>  
+</div>

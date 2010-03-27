@@ -1,0 +1,13 @@
+﻿Hej <%= @new_user.name %>!
+
+Detta är en automatik email utskick från <%= Option.get("section")%>. 
+
+<%= @current_user.name %> kommer att skicka tidningen <%= @magazine_item.full_name%> till dig.
+
+När du har läst färdig tidningen, kan du kan skicka vidare till nästa läsare i kö genom att besöka <%= Option.get("Url")%><%= url_for(:controller => "rental", :action => "index")%>
+
+<%= @current_user.name%> har email address: <%= @current_user.email %>
+ 
+mvh
+
+/<%= Option.get("section")%>
