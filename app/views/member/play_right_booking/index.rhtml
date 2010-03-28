@@ -1,0 +1,47 @@
+﻿<div id="play_right-page">
+  
+  <!-- RENTAL-INFO -->
+  
+  <div class="content_panel">
+    <h1>Mina spelrätt bokning</h1>
+    <% if current_user.play_right_bookings.size == 0 %>
+        <p class="info">Du har ingen bokning</p>
+    <% else %>    
+      <p class="info">Du har följande bokning.</p>
+      <table>
+        <tr>
+          <th class="first" width="30%">Golf banan</th>
+	        <th width="30%">Datum</th>
+          <th>&nbsp;</th>
+        </tr>
+        <%current_user.play_right_bookings.each do | booking | %>
+        <tr> 
+	        <td class="first"><%= h(booking.play_right.name) %></td>
+          <td><%= booking.when %></td>
+          <td>
+            <%= link_to "Ta bort", {:action => "remove",
+                    :id => booking.id}, :method => :post %>    
+          </td>
+        </tr>
+        <%end %>
+      </table>
+    <% end %>
+    <p/>
+  </div>    
+  <div class="content_panel">
+    <h1>Boka nytt spelrätt</h1>
+    
+    <% form_tag :action => 'book' do %>
+      <p>Här kan du boka golf banan. Du får bara har ett utstående bokning per gång. </p>
+      <hr/>
+      <label>Golf banan :</label>
+      <%= select_tag(:play_right_id, options_from_collection_for_select(@play_rights, :id, :name)) %><br/>
+      <label>Datum :</label>
+      <%= calendar_date_select_tag "when" %>
+      <br/>
+      <label></label>
+      <%= submit_tag "Boka"%>
+    </p>
+    <% end %>
+  </div>
+</div> 

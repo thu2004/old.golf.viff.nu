@@ -1,4 +1,4 @@
-class Member::UsersController < Member::ApplicationController
+class Member::UserController < Member::ApplicationController
   
   before_filter :login_required
 
