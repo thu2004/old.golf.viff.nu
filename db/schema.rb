@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100327166021) do
+ActiveRecord::Schema.define(:version => 20100328182558) do
 
   create_table "event_participants", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -137,6 +137,33 @@ ActiveRecord::Schema.define(:version => 20100327166021) do
   add_index "pages", ["id"], :name => "index_pages_on_id"
   add_index "pages", ["parent_id"], :name => "index_pages_on_parent_id"
 
+  create_table "play_right_bookings", :force => true do |t|
+    t.integer  "play_right_id"
+    t.integer  "user_id"
+    t.integer  "num_of_resource"
+    t.date     "when"
+    t.text     "information"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "play_right_bookings", ["play_right_id"], :name => "play_right_id"
+  add_index "play_right_bookings", ["user_id"], :name => "user_id"
+
+  create_table "play_rights", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "num_of_resource"
+    t.boolean  "weekend_allow"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "queued_mails", :force => true do |t|
+    t.text   "object"
+    t.string "mailer"
+  end
+
   create_table "refinery_settings", :force => true do |t|
     t.string   "name"
     t.text     "value"
@@ -205,6 +232,18 @@ ActiveRecord::Schema.define(:version => 20100327166021) do
     t.string "name"
   end
 
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "user_id", :null => false
+    t.integer "role_id", :null => false
+  end
+
+  add_index "roles_users", ["user_id"], :name => "user_id"
+  add_index "roles_users", ["role_id"], :name => "role_id"
+
+  create_table "schema_info", :id => false, :force => true do |t|
+    t.integer "version"
+  end
+
   create_table "slugs", :force => true do |t|
     t.string   "name"
     t.integer  "sluggable_id"
@@ -216,12 +255,6 @@ ActiveRecord::Schema.define(:version => 20100327166021) do
 
   add_index "slugs", ["name", "sluggable_type", "scope", "sequence"], :name => "index_slugs_on_name_and_sluggable_type_and_scope_and_sequence", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
-
-  create_table "sponsors", :force => true do |t|
-    t.string "name"
-    t.string "homepage"
-    t.string "image_url"
-  end
 
   create_table "user_plugins", :force => true do |t|
     t.integer "user_id"
@@ -254,6 +287,7 @@ ActiveRecord::Schema.define(:version => 20100327166021) do
     t.string   "golf_hcp"
     t.string   "golf_club"
     t.string   "type"
+    t.string   "company"
   end
 
   add_index "users", ["id"], :name => "index_users_on_id"
@@ -264,6 +298,9 @@ ActiveRecord::Schema.define(:version => 20100327166021) do
   add_foreign_key "magazine_items", ["magazine_number_id"], "magazine_numbers", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "magazine_items_ibfk_1"
 
   add_foreign_key "magazine_numbers", ["magazine_subscription_id"], "magazine_subscriptions", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "magazine_numbers_ibfk_1"
+
+  add_foreign_key "play_right_bookings", ["play_right_id"], "play_rights", ["id"], :name => "play_right_bookings_ibfk_1"
+  add_foreign_key "play_right_bookings", ["user_id"], "users", ["id"], :name => "play_right_bookings_ibfk_2"
 
   add_foreign_key "rental_histories", ["magazine_item_id"], "magazine_items", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "rental_histories_ibfk_1"
   add_foreign_key "rental_histories", ["user_id"], "users", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "rental_histories_ibfk_2"

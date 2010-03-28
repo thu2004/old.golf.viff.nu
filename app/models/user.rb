@@ -58,21 +58,22 @@ class User < ActiveRecord::Base
   #-------------------------------------------------------------------------------------------------
   # Added by Thu 
 
- 	  has_many :events, :through => :event_participants
-  	has_many :rental_queues
-  	has_many :rental_subscriptions
-  	has_many :rentals
-  	has_many :rental_histories
-  	has_many :role_positions
-  	has_many :roles, :through => :role_positions
-
+ 	 has_many :events, :through => :event_participants
+   has_many :rental_queues
+   has_many :rental_subscriptions
+   has_many :rentals
+   has_many :rental_histories
+   has_many :role_positions
+   has_many :roles, :through => :role_positions
+   has_many :play_right_bookings
+    
    def name
    	"#{first_name} #{last_name}"
    end
 
    # role
    def has_role?(rolename)
-     self.roles.find_by_name(rolename) || superuser ? true : false  
+     superuser || self.roles.find_by_name(rolename) ? true : false  
    end
 
    # magazine_admin?

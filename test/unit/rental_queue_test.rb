@@ -6,14 +6,6 @@ class RentalQueueTest < ActiveSupport::TestCase
 	should_validate_presence_of :magazine_number, :user
 
   context	'The db constraints' do
-    setup do
-      Rental.destroy_all
-      RentalSubscription.destroy_all
-		  MagazineSubscription.destroy_all 
-      MagazineNumber.destroy_all 
-      MagazineItem.destroy_all
-    end
-  
     should 'automatic remove rental queue when magazine number is destroyed' do
       rs = Factory(:rental_queue)
       user = rs.user

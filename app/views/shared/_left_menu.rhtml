@@ -3,7 +3,7 @@
 		<ul>
 			<li><%= link_to "Aktiviteter", :controller => "/member/event" %></li>
 	  	<li><%= link_to "Förmån", :controller => "/member/benefit" %></li>
-	  	<li><%= link_to "Spelrätter", :controller => "/member/playright" %></li>	
+	  	<li><%= link_to "Spelrättersbokning", :controller => "/member/play_right_booking" %></li>	
   		<li><%= link_to "Tidningscirkulering", :controller => "/member/rental" %></li>	
     
 			<% if logged_in? %>
@@ -22,7 +22,7 @@
         <li><%= link_to "Tidning prenum", :controller => "/member/rental/show_magazine_subscriptions" %></li>
         <li><%= link_to "Tidning med kö", :controller => "/member/rental/show_magazines" %></li><br/>
           <hr/><br/>
-				<li><%= link_to "Medlems epost", :controller => "/member/users" %></li>
+				<li><%= link_to "Medlems epost", :controller => "/member/user" %></li>
 <% end %>		
 				</ul>
 	</div>
@@ -32,9 +32,13 @@
 		<h3>Administration</h3>
 		<ul>
 				<li><%= link_to "Admin public site", :controller => "/admin/dashboard" %><br/></li>
-		    <li><%= link_to "Events", :controller => "/admin_db/event" %></li><br/>
+		    <li><%= link_to "Events", :controller => "/admin_db/event" %></li>
+        <li><%= link_to "Playrights", :controller => "/admin_db/play_right" %></li>
+        <li><%= link_to "PlayrightBookings", :controller => "/admin_db/play_right_booking" %></li>
+        <br/>
 		    <li><%= link_to "Members fee", :controller => "/admin_db/user", :action => "receive_payment"%><br/></li>
-            <hr/><br/>
+        <hr/><br/>
+
         <li><%= link_to "Options", :controller => "/admin_db/option" %></li>
 		    <li><%= link_to "Users", :controller => "/admin_db/user" %></li>
 		    <li><%= link_to "Roles", :controller => "/admin_db/role" %><br/></li>
