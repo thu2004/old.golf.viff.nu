@@ -5,7 +5,7 @@ class Member::EventController < Member::ApplicationController
 	def index
 		@future_events = Event.find(:all) # :conditions => "start_date > #{Time.now})
 		@past_events = Event.find(:all) - @future_events
-		
+		@event = Event.new
 	end
 	
 	def add_participant

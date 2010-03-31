@@ -30,6 +30,8 @@ Refinery::Initializer.run do |config|
   config.gem "factory_girl", :source => "http://gemcutter.org"
   config.gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.github.com"
   config.gem "calendar_date_select"
+  config.gem 'formtastic'
+  config.gem 'will_paginate'
 end
 
 # You can set things in the following file and we'll try hard not to destroy them in updates, promise.

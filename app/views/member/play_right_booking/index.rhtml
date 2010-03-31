@@ -31,11 +31,13 @@
   <div class="content_panel">
     <h1>Boka nytt spelrätt</h1>
     
+    <p>Här kan du boka golf banan. Du får bara har ett utstående bokning per gång. </p>
+    <p/>
     <% form_tag :action => 'book' do %>
-      <p>Här kan du boka golf banan. Du får bara har ett utstående bokning per gång. </p>
-      <hr/>
       <label>Golf banan :</label>
       <%= select_tag(:play_right_id, options_from_collection_for_select(@play_rights, :id, :name)) %><br/>
+     <br/>
+      
       <label>Datum :</label>
       <%= calendar_date_select_tag "when" %>
       <br/>
@@ -43,5 +45,22 @@
       <%= submit_tag "Boka"%>
     </p>
     <% end %>
+  </div>
+  
+  <div class="content_panel">
+    <h1>Boka nytt spelrätt</h1>
+    
+    <p>Här kan du boka golf banan. Du får bara har ett utstående bokning per gång. </p>
+    <p/>
+    <% semantic_form_for [:member, PlayRightBooking.new] do |form| %>
+      <% form.inputs do %>
+        <%= form.input :play_right, :label => 'Golfsbanan', :include_blank => false %>
+        <%= form.input :when, :label => 'Datum' %>
+        <% form.buttons do %>
+          <%= form.commit_button %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </p>
   </div>
 </div> 

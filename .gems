@@ -1,0 +1,6 @@
+refinerycms-news 
+factory_girl --source http://gemcutter.org
+thoughtbot-shoulda --source http://gems.github.com
+calendar_date_select
+formtastic
+will_paginate
