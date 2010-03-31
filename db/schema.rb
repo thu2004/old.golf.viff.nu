@@ -12,14 +12,11 @@
 ActiveRecord::Schema.define(:version => 20100328182558) do
 
   create_table "event_participants", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "event_id",   :null => false
+    t.integer  "user_id"
+    t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "event_participants", ["user_id"], :name => "user_id"
-  add_index "event_participants", ["event_id"], :name => "event_id"
 
   create_table "events", :force => true do |t|
     t.string   "name",            :limit => 60
@@ -70,8 +67,6 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
     t.integer "copy_number"
   end
 
-  add_index "magazine_items", ["magazine_number_id"], :name => "magazine_number_id"
-
   create_table "magazine_numbers", :force => true do |t|
     t.string   "name"
     t.integer  "num_of_copy"
@@ -79,8 +74,6 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "magazine_numbers", ["magazine_subscription_id"], :name => "magazine_subscription_id"
 
   create_table "magazine_subscriptions", :force => true do |t|
     t.string "name"
@@ -147,9 +140,6 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
     t.datetime "updated_at"
   end
 
-  add_index "play_right_bookings", ["play_right_id"], :name => "play_right_id"
-  add_index "play_right_bookings", ["user_id"], :name => "user_id"
-
   create_table "play_rights", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -157,11 +147,6 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
     t.boolean  "weekend_allow"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "queued_mails", :force => true do |t|
-    t.text   "object"
-    t.string "mailer"
   end
 
   create_table "refinery_settings", :force => true do |t|
@@ -181,25 +166,16 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
     t.date    "return_on"
   end
 
-  add_index "rental_histories", ["magazine_item_id"], :name => "magazine_item_id"
-  add_index "rental_histories", ["user_id"], :name => "user_id"
-
   create_table "rental_queues", :force => true do |t|
     t.integer  "magazine_number_id"
     t.integer  "user_id"
     t.datetime "created_at"
   end
 
-  add_index "rental_queues", ["magazine_number_id"], :name => "magazine_number_id"
-  add_index "rental_queues", ["user_id"], :name => "user_id"
-
   create_table "rental_subscriptions", :force => true do |t|
     t.integer "magazine_subscription_id"
     t.integer "user_id"
   end
-
-  add_index "rental_subscriptions", ["magazine_subscription_id"], :name => "magazine_subscription_id"
-  add_index "rental_subscriptions", ["user_id"], :name => "user_id"
 
   create_table "rentals", :force => true do |t|
     t.integer "magazine_item_id"
@@ -207,9 +183,6 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
     t.date    "rent_on"
     t.date    "last_remind_date"
   end
-
-  add_index "rentals", ["magazine_item_id"], :name => "magazine_item_id"
-  add_index "rentals", ["user_id"], :name => "user_id"
 
   create_table "resources", :force => true do |t|
     t.string   "content_type"
@@ -221,27 +194,12 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
   end
 
   create_table "role_positions", :id => false, :force => true do |t|
-    t.integer "user_id", :null => false
-    t.integer "role_id", :null => false
+    t.integer "user_id"
+    t.integer "role_id"
   end
-
-  add_index "role_positions", ["user_id"], :name => "user_id"
-  add_index "role_positions", ["role_id"], :name => "role_id"
 
   create_table "roles", :force => true do |t|
     t.string "name"
-  end
-
-  create_table "roles_users", :id => false, :force => true do |t|
-    t.integer "user_id", :null => false
-    t.integer "role_id", :null => false
-  end
-
-  add_index "roles_users", ["user_id"], :name => "user_id"
-  add_index "roles_users", ["role_id"], :name => "role_id"
-
-  create_table "schema_info", :id => false, :force => true do |t|
-    t.integer "version"
   end
 
   create_table "slugs", :force => true do |t|
@@ -262,8 +220,8 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
     t.integer "position"
   end
 
-  add_index "user_plugins", ["user_id", "title"], :name => "index_unique_user_plugins", :unique => true
   add_index "user_plugins", ["title"], :name => "index_user_plugins_on_title"
+  add_index "user_plugins", ["user_id", "title"], :name => "index_unique_user_plugins", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "login",                                :null => false
@@ -291,30 +249,5 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
   end
 
   add_index "users", ["id"], :name => "index_users_on_id"
-
-  add_foreign_key "event_participants", ["user_id"], "users", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "event_participants_ibfk_1"
-  add_foreign_key "event_participants", ["event_id"], "events", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "event_participants_ibfk_2"
-
-  add_foreign_key "magazine_items", ["magazine_number_id"], "magazine_numbers", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "magazine_items_ibfk_1"
-
-  add_foreign_key "magazine_numbers", ["magazine_subscription_id"], "magazine_subscriptions", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "magazine_numbers_ibfk_1"
-
-  add_foreign_key "play_right_bookings", ["play_right_id"], "play_rights", ["id"], :name => "play_right_bookings_ibfk_1"
-  add_foreign_key "play_right_bookings", ["user_id"], "users", ["id"], :name => "play_right_bookings_ibfk_2"
-
-  add_foreign_key "rental_histories", ["magazine_item_id"], "magazine_items", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "rental_histories_ibfk_1"
-  add_foreign_key "rental_histories", ["user_id"], "users", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "rental_histories_ibfk_2"
-
-  add_foreign_key "rental_queues", ["magazine_number_id"], "magazine_numbers", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "rental_queues_ibfk_1"
-  add_foreign_key "rental_queues", ["user_id"], "users", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "rental_queues_ibfk_2"
-
-  add_foreign_key "rental_subscriptions", ["magazine_subscription_id"], "magazine_subscriptions", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "rental_subscriptions_ibfk_1"
-  add_foreign_key "rental_subscriptions", ["user_id"], "users", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "rental_subscriptions_ibfk_2"
-
-  add_foreign_key "rentals", ["magazine_item_id"], "magazine_items", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "rentals_ibfk_1"
-  add_foreign_key "rentals", ["user_id"], "users", ["id"], :on_update => :cascade, :name => "rentals_ibfk_2"
-
-  add_foreign_key "role_positions", ["user_id"], "users", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "role_positions_ibfk_1"
-  add_foreign_key "role_positions", ["role_id"], "roles", ["id"], :on_update => :cascade, :on_delete => :cascade, :name => "role_positions_ibfk_2"
 
 end

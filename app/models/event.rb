@@ -14,7 +14,7 @@
 #
 
 class Event < ActiveRecord::Base
-	has_many   :event_participants
+	has_many   :event_participants, :dependent => :destroy
 	has_many   :users, :through => :event_participants
 	validates_presence_of :name
 	validates_presence_of :start_date, :end_date, :max_participant

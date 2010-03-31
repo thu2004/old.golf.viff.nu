@@ -11,7 +11,7 @@
 
 class MagazineItem < ActiveRecord::Base
 	belongs_to :magazine_number
-	has_one :rental
+	has_one :rental, :dependent => :destroy
 	
 	def is_rent()
 		return Rental.find(:first, :conditions => "magazine_item_id = #{id}") != nil

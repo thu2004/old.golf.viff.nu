@@ -13,8 +13,8 @@
 
 class MagazineNumber < ActiveRecord::Base
 	belongs_to :magazine_subscription
-	has_many :rental_queues
-	has_many :magazine_items
+	has_many :rental_queues, :dependent => :destroy
+	has_many :magazine_items, :dependent => :destroy
 	validates_presence_of :name
 	validates_presence_of :magazine_subscription
 	

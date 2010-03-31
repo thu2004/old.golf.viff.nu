@@ -1,5 +1,5 @@
 class Role < ActiveRecord::Base
-  has_many :role_positions
+  has_many :role_positions, :dependent => :destroy
   has_many :users, :through => :role_positions
 
 	validates_presence_of :name

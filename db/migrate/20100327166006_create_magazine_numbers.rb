@@ -3,7 +3,7 @@ class CreateMagazineNumbers < ActiveRecord::Migration
     create_table :magazine_numbers do |t|
 			t.column :name, :string
 			t.column :num_of_copy, :integer
-		  t.column :magazine_subscription_id, :integer, :on_delete => :cascade, :on_update => :cascade
+		  t.column :magazine_subscription_id, :integer
       t.timestamps
     end
   end
