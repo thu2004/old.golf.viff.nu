@@ -1,4 +1,4 @@
-class Member::PlayRightBookingController < Member::ApplicationController
+class Member::PlayRightBookingsController < Member::ApplicationController
 	
   before_filter :login_required
   

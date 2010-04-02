@@ -7,7 +7,8 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "pages", :action => "home"
   
   map.namespace(:member) do |member|
-    # member.root :controller => "/member/event", :action => "index"
+    member.root :controller => "play_right_bookings", :action => "index"
+    #member.root :play_right_bookings_url
     member.resources :event
     member.resources :play_right_bookings
   end
