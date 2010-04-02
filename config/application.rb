@@ -32,6 +32,7 @@ Refinery::Initializer.run do |config|
   config.gem "calendar_date_select"
   config.gem 'formtastic'
   config.gem 'will_paginate'
+  config.gem "cloudfiles"
 end
 
 # You can set things in the following file and we'll try hard not to destroy them in updates, promise.

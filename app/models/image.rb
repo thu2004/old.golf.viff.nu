@@ -5,9 +5,7 @@ class Image < ActiveRecord::Base
 
   # Docs for attachment_fu http://github.com/technoweenie/attachment_fu
   has_attachment :content_type => :image,
-                 #:storage => (Refinery.s3_backend ? :s3 : :file_system),
                  :storage => :cloud_files,
-                 #:path_prefix => (Refinery.s3_backend ? nil : 'public/system/images'),
                  :processor => 'Rmagick',
                  :thumbnails => ((((thumbnails = RefinerySetting.find_or_set(:image_thumbnails, {})).is_a?(Hash) ? thumbnails : (RefinerySetting[:image_thumbnails] = {}))) rescue {}),
                  :max_size => MAX_SIZE_IN_MB.megabytes
