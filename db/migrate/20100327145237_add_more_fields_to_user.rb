@@ -8,7 +8,7 @@ class AddMoreFieldsToUser < ActiveRecord::Migration
     add_column :users, :paid, :boolean, :default => false
     add_column :users, :comment, :text
     add_column :users, :member_since, :string
-    add_column :users, :golf_id, :string
+    add_column :users, :golf_person_nr, :string
     add_column :users, :golf_hcp, :string
     add_column :users, :golf_club, :string
     add_column :users, :type, :string
@@ -21,7 +21,7 @@ class AddMoreFieldsToUser < ActiveRecord::Migration
     remove_column :users, :golf_person_nr
     remove_column :users, :golf_club
     remove_column :users, :golf_hcp
-    remove_column :users, :golf_id
+    remove_column :users, :golf_person_nr
     remove_column :users, :member_since
     remove_column :users, :comment
     remove_column :users, :paid

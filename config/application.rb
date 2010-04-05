@@ -33,6 +33,7 @@ Refinery::Initializer.run do |config|
   config.gem 'formtastic'
   config.gem 'will_paginate'
   config.gem "cloudfiles"
+  config.gem "validation_reflection"
 end
 
 # You can set things in the following file and we'll try hard not to destroy them in updates, promise.

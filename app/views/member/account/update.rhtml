@@ -29,19 +29,37 @@
         <%= f.text_field :email, :size => 40 %>
       </p>
       <p>
+       	<label>Telefon</label>
+           <%= f.text_field :phone, :size => 40 %>
+         </p>
+      <p>
       	<label>Mobil:</label>
         <%= f.text_field :mobile_phone, :size => 40 %>
       </p>
       <p>
       	<label>Företag:</label>
         <%= f.text_field :company, :size => 40 %>
-        (Ericsson, SonyEricsson)
+        (Ericsson, SonyEricsson, ST-Ericsson)
       </p>
       <p>
       	<label>Byggnad:</label>
         <%= f.text_field :location, :size => 40 %>
         (ex. Delta 3 room 2111, VT Greenland room 111)
-      </p>      		        
+      </p>   
+      <% if Option.golf_section? %>
+      <p>
+      	<label>Golf person nr</label>
+        <%= f.text_field :golf_person_nr, :size => 40 %>
+      </p>
+      <p>
+      	<label>Golf hcp</label>
+        <%= f.text_field :golf_hcp, :size => 40 %>
+      </p>
+      <p>
+      	<label>Golf klubben</label>
+        <%= f.text_field :golf_club, :size => 40 %>
+      </p>
+      <% end %>   		        
       <p>
         <label>&nbsp;</label><%= submit_tag 'Uppdatera' %>
       </p>

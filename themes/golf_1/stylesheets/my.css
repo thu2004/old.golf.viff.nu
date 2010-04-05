@@ -73,3 +73,77 @@ h1, h2, h3, h4, h5, h6 {
 	_color: #4f2617;
 	color: #4F6613;
 }
+
+#login {
+	padding: 50px 200px;
+	width: 590px;
+}
+
+#login #page h1 {
+	margin: 0;
+	padding: 5px;
+	font-size: 20px;
+	line-height:22px
+}
+
+#login div.session_username, #login div.session_password {
+	float: left;
+	margin-left: 5px;
+}
+
+#login label {
+	display: block;
+	float: left;
+	margin-right: 10px;
+	padding-top: 2px;
+	text-align: right;
+	width: 110px;
+}
+
+#login div.form-actions {
+	margin-top: 12px;
+	margin-left: 120px;
+}
+
+#login div.forgot_password {
+  float: right;
+  margin-top: -20px;
+  margin-right: 50px;
+}
+
+#login div.remember_me label {
+	display: inline;
+}
+
+#login div.session_username input, #login div.session_password input {
+	width: 260px;
+}
+
+#login div.actions {
+	margin-top: 12px;
+}
+
+
+.errorExplanation {
+	background: 7px 10px no-repeat url('/images/refinery/icons/cancel.png') #FFB1B1;
+	padding: 0px 5px 5px 30px;
+	font-weight: bold;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 1px solid red;
+}
+
+.errorExplanation h2 {
+	color: red;
+	text-transform: none;
+	display: none;
+}
+
+.errorExplanation p {
+	font-weight: normal;
+}
+
+.fieldWithErrors input, .fieldWithErrors textarea {
+	border: 1px solid red;
+	background-color: #FFECF0;
+}

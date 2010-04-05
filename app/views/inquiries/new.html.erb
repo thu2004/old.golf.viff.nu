@@ -1,0 +1,20 @@
+<% content_for :body_content_left do %>
+  <div class='inquiries'>
+    <%= @page[:body] %>
+
+    <%= error_messages_for :inquiry, :header_message => "Whoops there was a small problem",
+                                      :message => "The following problems need to be corrected:" %>
+    <% semantic_form_for @inquiry do |form| %>
+      <% form.inputs do %>
+        <%= form.input :name, :label => 'Namn' %>
+        <%= form.input :email, :label => 'E-post' %>
+        <%= form.input :phone, :label => 'Mobil' %>
+        <%= form.input :message, :label => 'Medelande' %>
+      <% end %>
+      <% form.buttons do %>
+           <%= form.commit_button :label => "Skicka" %>
+       <% end %>
+    <% end %>
+  </div>
+<% end %>
+<%= render :partial => "/shared/content_page" %>

@@ -16,6 +16,10 @@ class Member::AccountController < Member::ApplicationController
       @user.mobile_phone = params[:user][:mobile_phone]
       @user.location = params[:user][:location]
       @user.company = params[:user][:company]
+      @user.phone = params[:user][:telefon]
+      @user.golf_person_nr = params[:user][:golf_person_nr]
+      @user.golf_hcp = params[:user][:golf_hcp]
+      @user.golf_club = params[:user][:golf_club]
 
       if (!@user.valid?)
         flash[:error] = "Användare data är felaktig"
@@ -24,7 +28,7 @@ class Member::AccountController < Member::ApplicationController
 
       if @user.save
         flash[:notice] = "Konton är uppdaterad"
-        redirect_to(:controller => '/', :action => 'index')
+        redirect_to(:controller => '/member', :action => 'index')
       end
   end
 end

@@ -3,6 +3,7 @@
   <% content_for :head do %>
       <%= stylesheet_link_tag "blueprint/screen" , :theme => true  %>
       <%= stylesheet_link_tag "blueprint/print" , :theme => true, :media => "print"  %>
+      <%= stylesheet_link_tag 'formtastic', 'formtastic_changes'%>
       <%= stylesheet_link_tag "my" , :theme => true %>
   <% end %>
   <%= render :partial => "/shared/head", :locals => {:theme => true} %>
@@ -12,10 +13,10 @@
       <div id='page' class='clear'>
         <div id='header'>
           <div id='header_content'>
-            <div class='column span-12'>
+            <div class='column span-10'>
               <h1><%= link_to RefinerySetting[:site_name], root_url %></h1>
             </div>
-            <div class='column span-12 last'>
+            <div class='column span-14 last'>
               <%= render :partial => "/shared/menu" %>
             </div>
           </div>
