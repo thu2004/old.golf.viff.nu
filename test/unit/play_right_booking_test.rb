@@ -4,7 +4,7 @@ class PlayRightBookingTest < ActiveSupport::TestCase
   should_belong_to :user
   should_belong_to :play_right
   should_validate_presence_of :num_of_resource
-  should_validate_presence_of :when
+  should_validate_presence_of :booked_on
   
   context 'The factory' do
      should 'that create unique post' do
@@ -15,13 +15,4 @@ class PlayRightBookingTest < ActiveSupport::TestCase
    	end
  	end
  	
- 	context 'booking' do
- 	  setup do
- 	    
- 	  end
- 	  
- 	  should 'not allow overbook' do
- 	    
- 	  end
- 	end
 end

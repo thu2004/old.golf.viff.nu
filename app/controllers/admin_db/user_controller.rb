@@ -20,8 +20,9 @@ class AdminDb::UserController < Member::ApplicationController
 	  if request.post?
 	    user = User.find(params[:user_id])
 	    if (user)
-	      self.current_user=user
-	      redirect_to :controller => "/rental"
+          if @session.save
+	          redirect_to :controller => "/member"
+	        end
 	    end
      end
   

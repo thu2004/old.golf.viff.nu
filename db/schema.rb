@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
     t.integer  "play_right_id"
     t.integer  "user_id"
     t.integer  "num_of_resource"
-    t.date     "when"
+    t.date     "booked_on"
     t.text     "information"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -211,7 +211,7 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
     t.datetime "created_at"
   end
 
-  add_index "slugs", ["name", "sluggable_type", "scope", "sequence"], :name => "index_slugs_on_name_and_sluggable_type_and_scope_and_sequence", :unique => true
+  add_index "slugs", ["name", "scope", "sequence", "sluggable_type"], :name => "index_slugs_on_name_and_sluggable_type_and_scope_and_sequence", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "user_plugins", :force => true do |t|
@@ -220,8 +220,8 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
     t.integer "position"
   end
 
+  add_index "user_plugins", ["title", "user_id"], :name => "index_unique_user_plugins", :unique => true
   add_index "user_plugins", ["title"], :name => "index_user_plugins_on_title"
-  add_index "user_plugins", ["user_id", "title"], :name => "index_unique_user_plugins", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "login",                                :null => false
@@ -241,7 +241,7 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
     t.boolean  "paid",              :default => false
     t.text     "comment"
     t.string   "member_since"
-    t.string   "golf_id"
+    t.string   "golf_person_nr"
     t.string   "golf_hcp"
     t.string   "golf_club"
     t.string   "type"

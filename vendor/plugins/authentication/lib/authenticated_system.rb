@@ -10,6 +10,12 @@ module AuthenticatedSystem
       !!current_user
     end
 
+    # Returns true or false if the user is logged in and is a superuser.
+    # Preloads @current_user with the user model if they're logged in.
+    def logged_in_as_super_user?
+     logged_in? && current_user.superuser == true
+    end
+    
     def current_user
       @current_user ||= current_user_session && current_user_session.record
     end

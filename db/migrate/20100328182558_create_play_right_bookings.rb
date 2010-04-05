@@ -4,7 +4,7 @@ class CreatePlayRightBookings < ActiveRecord::Migration
       t.integer :play_right_id
       t.integer :user_id
       t.integer :num_of_resource
-      t.date :when
+      t.date :booked_on
       t.text :information
 
       t.timestamps

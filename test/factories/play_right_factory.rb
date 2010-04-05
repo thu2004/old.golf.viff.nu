@@ -8,5 +8,5 @@ Factory.define :play_right_booking do |f|
    f.association :play_right
    f.association :user
    f.num_of_resource 1
-   f.when  2.days.from_now.to_s(:db)
+   f.booked_on  2.days.from_now.to_s(:db)
 end
