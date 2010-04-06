@@ -1,13 +1,20 @@
 <% content_for :body_content_left do %>
   <div class='home'>
     <%= @page[:body] %>
-    <h2>Spelrätter</h2>
-    <p>Dagens LaGK bokningar</p>
-    
-    <p>Dagens EslövGK bokningar</p>
-    
-    <h2>Tävlingar</h2>
-    Kommande tävling är...
+    <div class="column span-7 colborder">
+        <h2>Spelrätter</h2>
+        <p>Dagens LaGK bokningar</p>
+
+        <p>Dagens EslövGK bokningar</p>
+    </div>
+    <div class="column span-7 colborder">
+      <h2>Tävlingar</h2>
+      Kommande tävling är...
+    </div>
+     <div class="column last">
+        <h2>Resultat</h2>
+        tävling resultat är...
+      </div>
   </div>
 <% end %>
 <%= render :partial => "/shared/content_page" %>

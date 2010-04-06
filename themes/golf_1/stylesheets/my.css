@@ -1,7 +1,5 @@
 body { 
-	_background-color: #826035;
 	background-color: #4F6613;
-	color: #4f2617;
 	color: #4F6613;
 	margin: 25px;
 }
@@ -12,16 +10,18 @@ body {
 }
 
 #page_container {
-	background: #FFFCDE url(/theme/images/header_bg.jpg) repeat-x top;
+	background: #FFFCDE url(/theme/images/header_s1_bg.jpg) repeat-x top;
 }
 
 #header {
-		height: 340px;
+		height: 270px;
 }
 
 #header h1 {
 	padding: 10px;
-	font-size: 40px;
+	font-size: 30px;
+	font-weight: normal
+	color: #4f2617;
 }
 
 #header a {
@@ -67,6 +67,10 @@ body {
 
 #body, #footer {
 	padding: 10px;
+}
+
+#body_content h1 {
+  border-bottom: 1px dotted;
 }
 
 h1, h2, h3, h4, h5, h6 {
