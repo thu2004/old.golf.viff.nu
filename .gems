@@ -1,8 +1,8 @@
-refinerycms-news 
+refinerycms-news --version "~> 0.9.7"
 factory_girl --source http://gemcutter.org
 thoughtbot-shoulda --source http://gems.github.com
 calendar_date_select
 formtastic
 will_paginate
 cloudfiles
-validation_reflection 
+validation_reflection
