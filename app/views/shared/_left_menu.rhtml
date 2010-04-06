@@ -44,19 +44,6 @@
 		    <li><%= link_to "Members fee", :controller => "/admin_db/user", :action => "receive_payment"%><br/></li>
 		    <li><%= link_to "Login as user", :controller => "/admin_db/user", :action => "change_user"%><br/></li>
         <hr/><br/>
-
-		    <li><%= link_to "Users", :controller => "/admin_db/user" %></li>
-		       
-	  	<% if Option.magazine_rental? %>		    
-        <hr/><br/>
-		    <li><%= link_to "Magazine numbers", :controller => "/admin_db/magazine_number" %></li>	
-		    <li><%= link_to "Magazine items", :controller => "/admin_db/magazine_item" %></li>	
-		    <li><%= link_to "Magazine subscriptions", :controller => "/admin_db/magazine_subscription" %></li>	
-		    <li><%= link_to "Rentals", :controller => "/admin_db/rental" %></li>	
-		    <li><%= link_to "Rental queues", :controller => "/admin_db/rental_queue" %></li>	
-		    <li><%= link_to "Rental subscriptions", :controller => "/admin_db/rental_subscription" %></li>	
-		  <% end %>
-		  <br/><hr/><br/>
 		</ul>
 	</div>
 <% end %>		
