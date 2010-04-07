@@ -30,7 +30,6 @@
     <p/>
   </div>    
   
-  
   <div class="content_panel">
     <h1>Boka nytt spelrätt</h1>
     
@@ -39,7 +38,7 @@
     <% semantic_form_for [:member, PlayRightBooking.new] do |form| %>
       <% form.inputs do %>
         <%= form.input :play_right, :label => 'Golfsbanan', :include_blank => false %>
-        <%= form.input :booked_on, :label => 'Datum' %>
+        <%= form.input :booked_on, :label => 'Datum', :start_year => Time.now.year, :end_year => Time.now.year %>
         <%= form.input :num_of_resource, :as => :hidden, :value => "1" %>
       <% end %>
       <% form.buttons do %>
