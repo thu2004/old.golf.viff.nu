@@ -2,10 +2,23 @@
   <div class='home'>
     <%= @page[:body] %>
     <div class="column span-7 colborder">
-        <h2>Spelrätter</h2>
-        <p>Dagens LaGK bokningar</p>
-
-        <p>Dagens EslövGK bokningar</p>
+        <h2>Dagens boking av spelrätter</h2>
+        <% @play_rights.each do |pr| %>  
+        <%  booking_count = pr.play_right_bookings.today.count %>
+        <%   if booking_count == 0 %>
+               <p><%= "Idag har <strong> #{pr.name}</strong> ingen bokning" %></p>
+        <%   else %>
+               <p>
+               <%   booking_msg = (booking_count == 1) ? "bokning" : "bokningar" %>
+               <%= "Idag har <strong> #{pr.name}</strong> #{booking_count} #{booking_msg}" %>
+               <ol>
+                  <% pr.play_right_bookings.each do |booking| %>
+                    <li><%= booking.user.name %></li>
+                 <% end %>
+               </ol>
+              </p>
+        <% end %>
+    <%   end %>
     </div>
     <div class="column span-7 colborder">
       <h2>Tävlingar</h2>

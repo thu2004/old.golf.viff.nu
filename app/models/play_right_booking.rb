@@ -2,6 +2,9 @@ class PlayRightBooking < ActiveRecord::Base
   belongs_to :play_right
   belongs_to :user
   
+  named_scope :forthcoming, :conditions => ['booked_on > ?', Date.today - 1.days]
+  named_scope :today, :conditions => ['booked_on = ?', Date.today]
+  
   validates_presence_of :num_of_resource
   validates_presence_of :booked_on
   

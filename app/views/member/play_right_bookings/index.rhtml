@@ -48,5 +48,24 @@
     <% end %>
   </p>
   </div>
-  
+ 
+  <div class="content_panel">
+    <h1>Dagens boking av spelrätter</h1>
+      <% @play_rights.each do |pr| %>  
+      <%  booking_count = pr.play_right_bookings.today.count %>
+      <%   if booking_count == 0 %>
+             <p><%= "Idag har <strong> #{pr.name}</strong> ingen bokning" %></p>
+      <%   else %>
+             <p>
+             <%   booking_msg = (booking_count == 1) ? "bokning" : "bokningar" %>
+             <%= "Idag har <strong> #{pr.name}</strong> #{booking_count} #{booking_msg}" %>
+             <ol>
+                <% pr.play_right_bookings.each do |booking| %>
+                    <li><%= "#{booking.user.name} - #{booking.user.email} - #{booking.user.mobile_phone}" %></li>
+               <% end %>
+             </ol>
+            </p>
+        <% end %>
+     <% end %>
+    </div>
 </div> 

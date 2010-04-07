@@ -14,5 +14,34 @@ class PlayRightBookingTest < ActiveSupport::TestCase
    	  assert_equal true, o2.valid?, o2.errors.full_messages 
    	end
  	end
- 	
+ 
+ should "find correct forthcoming booking" do
+   start_day = Date.today
+   playright = Factory(:play_right)
+   playright.play_right_bookings.create(:booked_on => start_day, :num_of_resource => 1)
+   assert_equal 1, playright.play_right_bookings.forthcoming.count
+   
+   playright.play_right_bookings.create(:booked_on => start_day - 2.days, :num_of_resource => 1)
+   assert_equal 1, playright.play_right_bookings.forthcoming.count
+   
+   playright.play_right_bookings.create(:booked_on => start_day + 2.days, :num_of_resource => 1)
+   assert_equal 2, playright.play_right_bookings.forthcoming.count
+ end	
+ 
+ should "find correct today booking" do
+   start_day = Date.today
+   playright = Factory(:play_right)
+   playright.play_right_bookings.create(:booked_on => start_day, :num_of_resource => 1)
+   assert_equal 1, playright.play_right_bookings.today.count
+   
+   playright.play_right_bookings.create(:booked_on => start_day - 2.days, :num_of_resource => 1)
+   assert_equal 1, playright.play_right_bookings.today.count
+   
+   playright.play_right_bookings.create(:booked_on => start_day, :num_of_resource => 1)
+   assert_equal 2, playright.play_right_bookings.today.count
+    
+   playright.play_right_bookings.create(:booked_on => start_day + 2.days, :num_of_resource => 1)
+   assert_equal 2, playright.play_right_bookings.today.count   
+ end
+
 end

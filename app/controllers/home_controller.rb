@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   before_filter :find_page 
 
   def index
-    
+    @play_rights = PlayRight.find(:all)
   end
   
 protected
