@@ -19,11 +19,12 @@
 	        <td class="first"><%= h(booking.play_right.name) %></td>
           <td><%= booking.booked_on %></td>
           <td>
-            <%= link_to "Ta bort", {:action => "remove",
-                    :id => booking.id}, :method => :post %>    
+            <%= link_to "Ta bort", {:action => "remove", :id => booking.id}, 
+              :confirm => "Är du säker du vill ta bort bokningen den #{booking.booked_on} på #{booking.play_right.name}?",
+              :method => :post %>    
           </td>
         </tr>
-        <%end %>
+        <% end %>
       </table>
     <% end %>
     <p/>
