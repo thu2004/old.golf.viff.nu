@@ -1,0 +1,161 @@
+body { 
+	background-color: #4F6613;
+	color: #4F6613;
+	margin: 0px;
+	width: 460px;
+}
+
+#body_content {
+	margin: 0px 5px;
+	min-height: 500px;
+}
+
+#page_container {
+	background: #FFFCDE url(/theme/images/header_s2_bg.jpg) no-repeat top;
+}
+
+#header {
+		height: 170px;
+}
+
+#header_title {
+	background: #FFFCDE url(/theme/images/header_s2_bg.jpg) no-repeat top;
+	height: 120px;
+}
+
+#header h1 {
+	padding: 0px 10px;
+	font-size: 24px;
+	font-weight: normal
+	color: #4f2617;
+}
+
+#header a {
+	text-decoration: none;
+	color: #4f2617;
+}
+
+#menu {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	text-transform: uppercase;
+	float: left;
+}
+
+#menu li {
+	display: inline;
+	border-right: 1px solid;
+}
+
+#menu li.first {
+	border-right: 1px solid;
+}
+
+#menu li.last {
+	border-right: 0 solid;
+}
+
+#menu li.selected {
+	color: #826035;
+}
+
+#menu li a {
+	text-decoration: none;
+	padding: 5px;
+	color: #4f2617;
+}
+
+#menu li a:hover {
+	background-color: #94836E;
+	color: #4f2617;
+}
+
+#body, #footer {
+	padding: 5px;
+}
+
+#body_content h1 {
+  border-bottom: 1px dotted;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	_color: #4f2617;
+	color: #4F6613;
+}
+
+#login_dis {
+}
+
+#login_dis #page h1 {
+	margin: 0;
+	padding: 5px;
+	font-size: 20px;
+	line-height:22px
+}
+
+#login_dis div.session_username, #login_dis div.session_password {
+	float: left;
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+
+#login label {
+	display: block;
+	float: left;
+	margin-right: 10px;
+	padding-top: 2px;
+	text-align: right;
+	width: 110px;
+}
+
+#login_dis div.form-actions {
+	margin-top: 42px;
+	margin-left: 120px;
+}
+
+#login div.forgot_password {
+  margin-top: 5px;
+  margin-left: 120px;
+}
+
+#login_dis div.remember_me label {
+	display: block;
+	margin-top: 5px;
+}
+
+#login_dis div.session_remember_me input {
+	float: left;
+}
+
+#login_dis div.session_username input, #login_dis div.session_password input {
+	width: 260px;
+}
+
+#login_dis div.actions {
+	margin-top: 12px;
+}
+
+.errorExplanation {
+	background: 7px 10px no-repeat url('/images/refinery/icons/cancel.png') #FFB1B1;
+	padding: 0px 5px 5px 30px;
+	font-weight: bold;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 1px solid red;
+}
+
+.errorExplanation h2 {
+	color: red;
+	text-transform: none;
+	display: none;
+}
+
+.errorExplanation p {
+	font-weight: normal;
+}
+
+.fieldWithErrors input, .fieldWithErrors textarea {
+	border: 1px solid red;
+	background-color: #FFECF0;
+}

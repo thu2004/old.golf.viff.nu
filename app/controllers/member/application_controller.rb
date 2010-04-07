@@ -13,8 +13,11 @@ class Member::ApplicationController < ActionController::Base
   
   before_filter :login_required
   
+  layout :detect_browser
+  
   after_filter :set_charset
-#  before_filter :set_charset
+
+protected
   
   def set_charset
     content_type = headers['Content-Type'] || 'text/html'
@@ -24,8 +27,6 @@ class Member::ApplicationController < ActionController::Base
     end
   end
   
-  protected
-	
 	def verify_admin
 	  check_system_admin_role
 	end
@@ -44,5 +45,15 @@ class Member::ApplicationController < ActionController::Base
   def check_magazine_admin_role
     check_role('magazine_admin')
   end
+
+  MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
+
+  def detect_browser
+    agent = request.headers["HTTP_USER_AGENT"].downcase
+    MOBILE_BROWSERS.each do |m|
+      return "member/mobile_application" if agent.match(m)
+    end
+    return "member/application"
+   end
 	
 end

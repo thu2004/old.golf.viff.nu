@@ -14,7 +14,8 @@
 			<% end %>
     </ul>
 </div>
-	  
+
+<% if logged_in? && (current_user.admin? || current_user.magazine_admin?) %>
 	<div class="navcontainer">
 		<h3>Statistik</h3>
 		<ul>
@@ -22,17 +23,14 @@
 	  	 	<li><%= link_to "Alla lån", :controller => "/member/rental/show_rentals" %></li>
 				<li><%= link_to "Alla lån historik", :controller => "/member/rental/show_rental_histories" %></li>
 				<li><%= link_to "Alla medlemmar", :controller => "/member/rental/show_user_rentals"%></li> 		            
-<% if logged_in? && (current_user.admin? || current_user.magazine_admin?) %>
         <li><%= link_to "Tidning prenum", :controller => "/member/rental/show_magazine_subscriptions" %></li>
         <li><%= link_to "Tidning med kö", :controller => "/member/rental/show_magazines" %></li><br/>
           <hr/><br/>
       <% end %>
-<% end %>		
-<% if logged_in? && (current_user.admin? || current_user.magazine_admin?) %>
 		    <li><%= link_to "Medlems epost", :controller => "/member/user" %></li>
-<% end %>
 			</ul>
 	</div>
+<% end %>
 
 <% if logged_in? && current_user.admin? %>
 	<div class="navcontainer">
