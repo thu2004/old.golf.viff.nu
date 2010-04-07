@@ -1,7 +1,7 @@
 body { 
 	background-color: #4F6613;
 	color: #4F6613;
-	margin: 0px;
+	margin: 0px auto;
 	width: 460px;
 }
 
@@ -15,7 +15,7 @@ body {
 }
 
 #header {
-		height: 170px;
+		height: 110px;
 }
 
 #header_title {
@@ -41,6 +41,8 @@ body {
 	list-style-type: none;
 	text-transform: uppercase;
 	float: left;
+	font-size: 13px;
+	border-bottom: 1px solid;
 }
 
 #menu li {
@@ -80,60 +82,32 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	_color: #4f2617;
 	color: #4F6613;
-}
-
-#login_dis {
-}
-
-#login_dis #page h1 {
-	margin: 0;
-	padding: 5px;
-	font-size: 20px;
-	line-height:22px
-}
-
-#login_dis div.session_username, #login_dis div.session_password {
-	float: left;
-	margin-left: 5px;
-	margin-bottom: 5px;
 }
 
 #login label {
 	display: block;
-	float: left;
-	margin-right: 10px;
-	padding-top: 2px;
-	text-align: right;
-	width: 110px;
+	amargin-left: 0px;
+	apadding-top: 20px;
 }
 
-#login_dis div.form-actions {
-	margin-top: 42px;
-	margin-left: 120px;
-}
-
-#login div.forgot_password {
-  margin-top: 5px;
-  margin-left: 120px;
-}
-
-#login_dis div.remember_me label {
+#login div.session_username, #login div.session_password {
 	display: block;
-	margin-top: 5px;
+	margin-left: 0px;
+	padding-bottom: 20px;
 }
 
-#login_dis div.session_remember_me input {
-	float: left;
+#login div.remember_me {
+	margin-left: 0px;
+	padding-bottom: 20px;
 }
 
-#login_dis div.session_username input, #login_dis div.session_password input {
-	width: 260px;
+#login div.form-actions {
+	margin-bottom: 20px;
 }
 
-#login_dis div.actions {
-	margin-top: 12px;
+#login div.remember_me label {
+	display: inline;
 }
 
 .errorExplanation {
@@ -158,4 +132,16 @@ h1, h2, h3, h4, h5, h6 {
 .fieldWithErrors input, .fieldWithErrors textarea {
 	border: 1px solid red;
 	background-color: #FFECF0;
+}
+
+form ul {
+	list-style-type:none;
+}
+
+form ol {
+	list-style-type:none;
+}
+
+form li {
+	padding-bottom: 10px;
 }
