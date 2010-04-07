@@ -60,7 +60,7 @@
              <%   booking_msg = (booking_count == 1) ? "bokning" : "bokningar" %>
              <%= "Idag har <strong> #{pr.name}</strong> #{booking_count} #{booking_msg}" %>
              <ol>
-                <% pr.play_right_bookings.each do |booking| %>
+                <% pr.play_right_bookings.today.each do |booking| %>
                     <li><%= "#{booking.user.name} - #{booking.user.email} - #{booking.user.mobile_phone}" %></li>
                <% end %>
              </ol>
