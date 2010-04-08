@@ -24,3 +24,5 @@ config.log_level = :info
 # instead of the default file system for resources and images
 # Make sure to your bucket info is correct in amazon_s3.yml
 Refinery.s3_backend = true
+
+config.action_mailer.raise_delivery_errors = true
