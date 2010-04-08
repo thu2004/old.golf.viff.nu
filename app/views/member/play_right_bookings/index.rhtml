@@ -60,7 +60,10 @@
              <%= "Idag har <strong> #{pr.name}</strong> #{booking_count} #{booking_msg}" %>
              <ol>
                 <% pr.play_right_bookings.today.each do |booking| %>
-                    <li><%= "#{booking.user.name} - #{booking.user.email} - #{booking.user.mobile_phone}" %></li>
+                    <li>
+                      <%= "#{booking.user.name} - mobil = #{booking.user.mobile_phone} - " %>
+                      <%= "<a href=\"mailto:#{booking.user.email}\"> maila till spelare</a>" %>
+                    </li>
                <% end %>
              </ol>
             </p>
