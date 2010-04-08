@@ -8,14 +8,18 @@ class Member::PlayRightBookingsController < Member::ApplicationController
 	
 	def create
 	  if request.post?
-        booking = current_user.play_right_bookings.new(params[:play_right_booking])
+	    if match_precondition?    
+	      booking = current_user.play_right_bookings.new(params[:play_right_booking])
         
-        if booking.valid?
+        if booking.booked_on < Date.today
+          flash[:error] = "Du kan inte boka gårdagens tider"
+        elsif booking.valid?
           booking.save
-          flash[:notice] = "The booking is saved"          
+          flash[:notice] = "Bokningen har sparat"
         else
           flash[:error] = booking.errors.full_messages 
         end
+      end
     end
     redirect_to :action => :index
 	end
@@ -25,11 +29,26 @@ class Member::PlayRightBookingsController < Member::ApplicationController
       booking = current_user.play_right_bookings.find(params[:id])
       if booking.valid?
         booking.destroy
-        flash[:notice] = "The booking is removed"          
+        flash[:notice] = "Bokningen har tagit bort"          
       else
-        flash[:error] = "The booking is can't be removed"
+        flash[:error] = "Bokningen kan inte ta bort"
       end
     end
     redirect_to :action => :index
+  end
+
+protected
+
+  def match_precondition?
+    if current_user.external
+      flash[:error] = "Du har inte rätt att boka, tyvärr"
+      return false
+    end
+    max_count = 2
+    if current_user.play_right_bookings.forthcoming.count >= max_count
+      flash[:error] = "Du kan inte har mer än #{max_count} utestående bokning"
+      return false
+    end 
+    return true
   end
 end

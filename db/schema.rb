@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100328182558) do
+ActiveRecord::Schema.define(:version => 20100407121101) do
 
   create_table "event_participants", :force => true do |t|
     t.integer  "user_id"
@@ -246,6 +246,7 @@ ActiveRecord::Schema.define(:version => 20100328182558) do
     t.string   "golf_club"
     t.string   "type"
     t.string   "company"
+    t.boolean  "external"
   end
 
   add_index "users", ["id"], :name => "index_users_on_id"
