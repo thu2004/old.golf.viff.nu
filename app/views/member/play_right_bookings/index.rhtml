@@ -53,19 +53,23 @@
       <% @play_rights.each do |pr| %>  
       <%  booking_count = pr.play_right_bookings.today.count %>
       <%   if booking_count == 0 %>
-             <p><%= "Idag har <strong> #{pr.name}</strong> ingen bokning" %></p>
+             <p><h3><%= "Idag har <strong> #{pr.name}</strong> ingen bokning" %></p></h3>
       <%   else %>
              <p>
              <%   booking_msg = (booking_count == 1) ? "bokning" : "bokningar" %>
-             <%= "Idag har <strong> #{pr.name}</strong> #{booking_count} #{booking_msg}" %>
-             <ol>
-                <% pr.play_right_bookings.today.each do |booking| %>
-                    <li>
-                      <%= "#{booking.user.name} - mobil = #{booking.user.mobile_phone} - " %>
-                      <%= "<a href=\"mailto:#{booking.user.email}\"> maila till spelare</a>" %>
-                    </li>
-               <% end %>
-             </ol>
+             <h3><%= "Idag har <strong> #{pr.name}</strong> #{booking_count} #{booking_msg}" %></h3>
+                <table>
+                  <tr><th>Nr</th><th>Namn</th><th>Mobil</th><th>E-Post</th></tr>
+                  <% counter = 0 %>
+                  <% pr.play_right_bookings.today.each do |booking| %>
+                     <tr>
+                       <td><%= counter = counter + 1 %>
+                       <td><%= booking.user.name %></td>
+                       <td><%= booking.user.mobile_phone %></td>
+                       <td><%= "<a href=\"mailto:#{booking.user.email}\">skicka</a>" %></td>
+                    </tr>
+                 <% end %>
+                </table>
             </p>
         <% end %>
      <% end %>

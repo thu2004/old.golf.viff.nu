@@ -2,11 +2,11 @@
   <div class='home'>
     <%= @page[:body] %>
     <div class="column span-7 colborder">
-        <h2>Dagens boking av spelrätter</h2>
+        <h2>Bokning av spelrätter</h2>
         <% @play_rights.each do |pr| %>  
         <%  booking_count = pr.play_right_bookings.today.count %>
         <%   if booking_count == 0 %>
-               <p><%= "Idag har <strong> #{pr.name}</strong> ingen bokning" %></p>
+               <p><<%= "Idag har <strong> #{pr.name}</strong> ingen bokning" %></p>
         <%   else %>
                <p>
                <%   booking_msg = (booking_count == 1) ? "bokning" : "bokningar" %>
