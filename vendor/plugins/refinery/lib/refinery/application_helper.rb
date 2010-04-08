@@ -42,16 +42,16 @@ module Refinery::ApplicationHelper
         //google.load('jqueryui', '1.8');
         // google isn't using jqueryui 1.8 yet although it was before.
       </script>
-      #{javascript_include_tag 'jquery-ui-1.8rc1.min.js'}"
+      #{javascript_include_tag 'jquery-ui-1.8.min.js'}"
     else
-      javascript_include_tag 'jquery', 'jquery-ui-1.8rc1.min.js', :cache => (use_caching ? "cache/libraries" : nil)
+      javascript_include_tag 'jquery', 'jquery-ui-1.8.min.js', :cache => (use_caching ? "cache/libraries" : nil)
     end
   end
 
   # you can override the object used for the title by supplying options[:object]
   # this object must support custom_title_type if you want custom titles.
   def page_title(options = {})
-    object = options.fetch(:object, @page)
+    object = options.fetch(:object, @meta)
     options.delete(:object)
     options = RefinerySetting.find_or_set(:page_title, {
       :chain_page_title => false,

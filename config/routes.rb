@@ -4,7 +4,6 @@ ActionController::Routing::Routes.draw do |map|
   # These routes are contained within vendor/plugins/engine_name/config/routes.rb
 
   # The priority is based upon order of creation: first created -> highest priority.
-  #map.root :controller => "pages", :action => "home"
   map.root :controller => "home"
   
   map.namespace(:member) do |member|

@@ -1,19 +1,23 @@
 class RefinerySetting < ActiveRecord::Base
 
   validates_presence_of :name
-  validates_uniqueness_of :name
+  #validates_uniqueness_of :name
 
   serialize :value # stores into YAML format
   after_save do |object|
     cache_write(object.name, object.value)
   end
 
+  def self.cache_key(name)
+    "refinery_setting_#{name}"
+  end
+
   def self.cache_write(name, value)
-    Rails.cache.write("refinery_setting_#{name}", value)
+    Rails.cache.write(cache_key(name), value)
   end
 
   def self.cache_read(name)
-    Rails.cache.read("refinery_setting_#{name}")
+    Rails.cache.read(cache_key(name))
   end
 
   # Number of settings to show per page when using will_paginate
@@ -75,7 +79,7 @@ class RefinerySetting < ActiveRecord::Base
   def self.[]=(name, value)
     setting = find_or_create_by_name(name.to_s)
     setting.value = value
-    setting.save!
+    setting.save
   end
 
   # Below is not very nice, but seems to be required

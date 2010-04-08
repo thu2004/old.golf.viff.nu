@@ -21,12 +21,12 @@ class DashboardControllerTest < ActionController::TestCase
 
   def test_recent_activity_should_report_activity
     sleep 1
-    pages(:home_page).update_attribute(:updated_at, Time.now)
+    pages(:contact_us).update_attribute(:updated_at, Time.now)
 
     get :index
 
     # now the home page is updated is it at the top?
-    assert_equal pages(:home_page).id, assigns(:recent_activity).first.id
+    assert_equal pages(:contact_us).id, assigns(:recent_activity).first.id
   end
 
   def test_should_require_login_and_redirect
