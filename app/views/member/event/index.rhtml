@@ -16,7 +16,7 @@
 				<li>Max antal deltagare : <%= event.max_participant %></li>
 				<li>Antal anmälda deltagare : <%= event.users.size %> 
 			</ul>
-			<% if current_user.join_event?(event) %>
+			<% if current_user.events.count > 0 %>
 			  <p>Du är anmäld. <%= link_to("Klick här för att avregistrerar dig", {:action => "remove_participant", 
 			  	  :event_id => event.id}, :method => :post) %>
 			  </p>
