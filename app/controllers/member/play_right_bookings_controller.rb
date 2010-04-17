@@ -4,15 +4,12 @@ class Member::PlayRightBookingsController < Member::ApplicationController
   
 	def index
     @play_rights = PlayRight.find(:all)
-	end
-	
-	def test
-	end
-	
+  end
+		
 	def calendar
-	  @month = params[:month].to_i
-    @year = params[:year].to_i
-
+    @month = params[:month].nil? ? Date.today.month : params[:month].to_i
+    @year = params[:year].nil? ? Date.today.year : params[:year].to_i 
+ 
     @shown_month = Date.civil(@year, @month)
 
     @event_strips = PlayRightBooking.event_strips_for_month(@shown_month)

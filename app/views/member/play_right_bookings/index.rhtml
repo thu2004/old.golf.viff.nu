@@ -33,7 +33,9 @@
   <div class="content_panel">
     <h1>Boka nytt spelrätt</h1>
     
-    <p>Här kan du boka golf banan. Du får bara har ett utstående bokning per gång. </p>
+    <p>Här kan du boka golf banan. Du får har max två utstående bokning per gång. Här finns 
+	 <%= link_to('bokningskalender', calendar_member_play_right_booking_url(0)) %></p>
+	<p></p>
     <p/>
     <% semantic_form_for [:member, PlayRightBooking.new] do |form| %>
       <% form.inputs do %>
