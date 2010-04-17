@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file,
+# This file is auto-generated from the current state of the database. Instead of editing this file, 
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100407121101) do
+ActiveRecord::Schema.define(:version => 20100410201453) do
 
   create_table "event_participants", :force => true do |t|
     t.integer  "user_id"
@@ -22,10 +22,11 @@ ActiveRecord::Schema.define(:version => 20100407121101) do
     t.string   "name",            :limit => 60
     t.text     "description"
     t.string   "info_link",       :limit => 80
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.integer  "max_participant"
     t.datetime "created_at"
+    t.boolean  "all_day"
   end
 
   create_table "images", :force => true do |t|
@@ -138,6 +139,9 @@ ActiveRecord::Schema.define(:version => 20100407121101) do
     t.text     "information"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.boolean  "all_day"
   end
 
   create_table "play_rights", :force => true do |t|
@@ -211,7 +215,6 @@ ActiveRecord::Schema.define(:version => 20100407121101) do
     t.datetime "created_at"
   end
 
-  add_index "slugs", ["name", "scope", "sequence", "sluggable_type"], :name => "index_slugs_on_name_and_sluggable_type_and_scope_and_sequence", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "user_plugins", :force => true do |t|

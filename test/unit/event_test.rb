@@ -4,7 +4,7 @@ class EventTest < ActiveSupport::TestCase
 	should_have_many   :event_participants
 	should_have_many   :users
 	should_validate_presence_of :name
-	should_validate_presence_of :start_date, :end_date, :max_participant
+	should_validate_presence_of :start_at, :end_at, :max_participant
 	
 	context 'The factory' do
     should 'that create unique post' do

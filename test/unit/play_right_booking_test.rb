@@ -7,7 +7,7 @@ class PlayRightBookingTest < ActiveSupport::TestCase
   should_validate_presence_of :booked_on
   
   context 'The factory' do
-     should 'that create unique post' do
+    should 'that create unique post' do
    	  o1 = Factory(:play_right_booking)
    	  o2 = Factory(:play_right_booking)
    	  assert_equal true, o1.valid?, o1.errors.full_messages 
@@ -42,6 +42,15 @@ class PlayRightBookingTest < ActiveSupport::TestCase
     
    playright.play_right_bookings.create(:booked_on => start_day + 2.days, :num_of_resource => 1)
    assert_equal 2, playright.play_right_bookings.today.count   
+ end
+ 
+ should "set event_calendar data correctly" do
+   o1 = Factory(:play_right).play_right_bookings.new(:booked_on => Date.today, :num_of_resource => 1)
+   assert_equal true, o1.valid?, o1.errors.full_messages 
+   assert_equal nil, o1.start_at
+   assert o1.save
+   assert_not_equal nil, o1.start_at
+   
  end
 
 end
