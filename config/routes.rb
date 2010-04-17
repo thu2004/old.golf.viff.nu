@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
     member.root :controller => "play_right_bookings", :action => "index"
     #member.root :play_right_bookings_url
     member.resources :event
-    member.resources :play_right_bookings
+    member.resources :play_right_bookings, :member => { :calendar => :get }
   end
   
   map.namespace(:admin) do |admin|
