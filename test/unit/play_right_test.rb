@@ -2,7 +2,6 @@ require 'test_helper'
 
 class PlayRightTest < ActiveSupport::TestCase
   should_validate_presence_of :name
-  should_validate_presence_of :num_of_resource
   should_have_many :play_right_bookings
     
   context 'The factory' do
@@ -20,25 +19,25 @@ class PlayRightTest < ActiveSupport::TestCase
  	    assert_equal 0, play_right.play_right_bookings.size
 
  	    date = Date.today
- 	    assert_equal true, play_right.is_free?(date)
+ 	    assert_equal true, play_right.free?(date)
  	    
  	    play_right.play_right_bookings.create(:num_of_resource => 2, :booked_on => date)
  	    assert_equal 1, play_right.play_right_bookings.count
- 	    assert_equal true, play_right.is_free?(date)
+ 	    assert_equal true, play_right.free?(date)
  	    assert_equal 1, play_right.num_of_resource_left(date)
 
  	    play_right.play_right_bookings.create(:num_of_resource => 1, :booked_on => date)
  	    assert_equal 2, play_right.play_right_bookings.count
- 	    assert_equal false, play_right.is_free?(date) 
+ 	    assert_equal false, play_right.free?(date) 
  	    assert_equal 0, play_right.num_of_resource_left(date)
  	     	     	    
  	    play_right.play_right_bookings.create(:num_of_resource => 1, :booked_on => date)
  	    assert_equal 2, play_right.play_right_bookings.count
- 	    assert_equal false, play_right.is_free?(date)
+ 	    assert_equal false, play_right.free?(date)
 
  	    play_right.play_right_bookings.create(:num_of_resource => 1, :booked_on => date)
  	    assert_equal 2, play_right.play_right_bookings.count
- 	    assert_equal false, play_right.is_free?(date)
+ 	    assert_equal false, play_right.free?(date)
  	    
  	  end
  	end

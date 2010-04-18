@@ -1,9 +1,12 @@
 class PlayRight < ActiveRecord::Base
-  validates_presence_of :name
-  validates_presence_of :num_of_resource
+  default_value_for :num_of_resource, 1
+  default_value_for :weekend_allow, true
+  
   has_many :play_right_bookings, :dependent => :destroy
 
-  def is_free?(date, num_of_reserv=1)
+  validates_presence_of :name
+      
+  def free?(date, num_of_reserv=1)
     count = play_right_bookings.find_all_by_booked_on(date).inject(0) do |sum, booking|
       sum = sum + booking.num_of_resource
     end
@@ -16,5 +19,4 @@ class PlayRight < ActiveRecord::Base
     end
     num_of_resource - count
   end
-  
 end

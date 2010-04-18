@@ -1,7 +1,7 @@
 Factory.define :play_right do |f|
   f.sequence(:name) { |n| "play_right_#{n}"}
   f.num_of_resource 4
-  f.weekend_allow false
+  f.weekend_allow true
 end
 
 Factory.define :play_right_booking do |f|
