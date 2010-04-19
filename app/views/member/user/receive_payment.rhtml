@@ -1,0 +1,12 @@
+<h2>Registrering av medlemsavgift</h2>
+
+<% form_tag :action => 'receive_payment' do %>
+<p>
+Efter betalningen är registerad medlemen att notifierad via epost.
+<p/>
+<p/>
+  <label>Välja medlem</label>
+  <%= select_tag(:user_id, options_from_collection_for_select(@users, :id, :name)) %>
+<%= submit_tag "Registera betalningen"%>
+</p>
+<% end %>

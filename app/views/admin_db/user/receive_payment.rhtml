@@ -1,9 +1,0 @@
-<h2>Receive members fee</h2>
-
-<% form_tag :action => 'receive_payment' do %>
-<p>
-  <label>Select user</label>
-  <%= select_tag(:user_id, options_from_collection_for_select(@users, :id, :name)) %>
-<%= submit_tag "Register received payment"%>
-</p>
-<% end %>

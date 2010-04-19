@@ -1,9 +1,4 @@
-<%= error_messages_for 'user' %>
-<div id="update_form" class="content_panel">
-  <div id="form_inner">
-    <h1>Uppdatera konto</h1>
-    <br />
-      <% form_for :user do |f| -%>
+    <% form_for :user do |f| -%>
       <p>
       	<label>Inloggning:</label>
         <%=  f.text_field :login, :size => 40 %>
@@ -61,8 +56,12 @@
       </p>
       <% end %>   		        
       <p>
-        <label>&nbsp;</label><%= submit_tag 'Uppdatera' %>
+        <label>&nbsp;</label>
+        
+        <% if params[:action] =~ /new/ %>
+          <%= submit_tag 'Lägga till' %>
+        <% else %>
+          <%= submit_tag 'Uppdatera' %>
+        <% end %>
       </p>
     <% end -%>
-  </div>
-</div>

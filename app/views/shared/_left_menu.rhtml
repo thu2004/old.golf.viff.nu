@@ -1,23 +1,25 @@
 ﻿<div class="navcontainer">
 	<h3>Medlemstjänster</h3>				
 		<ul>
-			<li><%= link_to "Tävlingar", :controller => "/member/event" %></li>
 	  	<% if Option.benefit? %>			
 	  	<li><%= link_to "Förmån", :controller => "/member/benefit" %></li>
+	    <br/>
 	  	<% end %>
 	  	<li><%= link_to "Spelrätter", :controller => "/member/play_right_bookings" %></li>	
-	  	<% if Option.magazine_rental? %>
+	    <br/>
+			<li><%= link_to "Tävlingar", :controller => "/member/event" %></li>
+  	<% if Option.magazine_rental? %>
   		  <li><%= link_to "Tidningscirkulering", :controller => "/member/rental" %></li>	
       <% end %>
 			<% if logged_in? %>
-			  <li><br/><%= link_to "Uppdatera konto", :controller => "/member/account", :action => "update" %></li>			    
+			  <li><br/><%= link_to "Uppdatera konto", :controller => "/member/user", :action => "update" %></li>			    
 			<% end %>
     </ul>
 </div>
 
 <% if logged_in? && (current_user.admin? || current_user.magazine_admin?) %>
 	<div class="navcontainer">
-		<h3>Statistik</h3>
+		<h3>Misc</h3>
 		<ul>
 	  	<% if Option.magazine_rental? %>
 	  	 	<li><%= link_to "Alla lån", :controller => "/member/rental/show_rentals" %></li>
@@ -27,7 +29,7 @@
         <li><%= link_to "Tidning med kö", :controller => "/member/rental/show_magazines" %></li><br/>
           <hr/><br/>
       <% end %>
-		    <li><%= link_to "Medlems epost", :controller => "/member/user" %></li>
+		    <li><%= link_to "Epost listan", :controller => "/member/user" %></li>
 			</ul>
 	</div>
 <% end %>
@@ -36,12 +38,12 @@
 	<div class="navcontainer">
 		<h3>Administration</h3>
 		<ul>
-				<li><%= link_to "Admin public site", :controller => "/admin/dashboard" %><br/></li>
-		    <li><%= link_to "Admin database", :controller => "/admin_data" %></li>	
+				<li><%= link_to "Admin publika sidor", :controller => "/admin/dashboard" %><br/></li>
+		    <li><%= link_to "Admin databasen", :controller => "/admin_data" %></li>	
         <br/><hr/><br/>
-		    <li><%= link_to "Members fee", :controller => "/admin_db/user", :action => "receive_payment"%><br/></li>
-		    <li><%= link_to "Login as user", :controller => "/admin_db/user", :action => "change_user"%><br/></li>
-        <hr/><br/>
+		    <li><%= link_to "Lägga till ny medlem", :controller => "/member/user", :action => "new"%><br/></li>
+		    <li><%= link_to "Reg membersavgift", :controller => "/member/user", :action => "receive_payment"%><br/></li>
+		    <hr/><br/>
 		</ul>
 	</div>
 <% end %>		

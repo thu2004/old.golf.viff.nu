@@ -3,6 +3,8 @@ class Admin::DashboardController < Admin::BaseController
   def index
     @recent_activity = []
 
+    return # disable by THU
+    
     Refinery::Plugins.active.each do |plugin|
       begin
         plugin.activity.each do |activity|
