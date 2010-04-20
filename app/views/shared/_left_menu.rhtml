@@ -9,7 +9,7 @@
 	    <br/>
 			<li><%= link_to "Tävlingar", :controller => "/member/event" %></li>
   	<% if Option.magazine_rental? %>
-  		  <li><%= link_to "Tidningscirkulering", :controller => "/member/rental" %></li>	
+  		  <br/><li><%= link_to "Tidningscirkulering", :controller => "/member/rental" %></li>	
       <% end %>
 			<% if logged_in? %>
 			  <li><br/><%= link_to "Uppdatera konto", :controller => "/member/user", :action => "update" %></li>			    
