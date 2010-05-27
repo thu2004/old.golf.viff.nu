@@ -10,9 +10,16 @@ class OptionTest < ActiveSupport::TestCase
       @email   = Factory(:option, :name => "email")
     end
   
-    should "1" do
+    should "find the value" do
       assert_equal @section.value, Option.get("section")
       assert_equal @email.value, Option.get("email")
+    end
+    
+    should "The key should not be case sensitiv" do
+      assert_equal @section.value, Option.get("Section")
+      assert_equal @email.value, Option.get("Email")
+      assert_equal @section.value, Option.get("SectioN")
+      assert_equal @email.value, Option.get("EmaiL")
     end
   end
 end
