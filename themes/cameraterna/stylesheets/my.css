@@ -1,0 +1,153 @@
+body { 
+	background-color: #4F6613;
+	color: #4F6613;
+	margin: 25px;
+}
+
+#body_content {
+	margin: 15px;
+	min-height: 500px;
+}
+
+#page_container {
+	background: #FFFCDE url(/theme/images/header_s1_bg.jpg) repeat-x top;
+}
+
+#header {
+		height: 270px;
+}
+
+#header h1 {
+	padding: 10px;
+	font-size: 30px;
+	font-weight: normal
+	color: #4f2617;
+}
+
+#header a {
+	text-decoration: none;
+	color: #4f2617;
+}
+
+#menu {
+	margin: 0px;
+	padding: 10px;
+	list-style-type: none;
+	text-transform: uppercase;
+	float: right;
+}
+
+#menu li {
+	display: inline;
+	border-right: 1px solid;
+}
+
+#menu li.first {
+	border-right: 1px solid;
+}
+
+#menu li.last {
+	border-right: 0 solid;
+}
+
+#menu li.selected {
+	color: #826035;
+}
+
+#menu li a {
+	text-decoration: none;
+	padding: 10px;
+	color: #4f2617;
+}
+
+#menu li a:hover {
+	background-color: #94836E;
+	color: #4f2617;
+}
+
+#body, #footer {
+	padding: 10px;
+}
+
+#body_content h1 {
+  border-bottom: 1px dotted;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	_color: #4f2617;
+	color: #4F6613;
+}
+
+#login {
+	padding: 50px 200px;
+	width: 590px;
+}
+
+#login #page h1 {
+	margin: 0;
+	padding: 5px;
+	font-size: 20px;
+	line-height:22px
+}
+
+#login div.session_username, #login div.session_password {
+	float: left;
+	margin-left: 5px;
+}
+
+#login label {
+	display: block;
+	float: left;
+	margin-right: 10px;
+	padding-top: 2px;
+	text-align: right;
+	width: 110px;
+}
+
+#login div.form-actions {
+	margin-top: 12px;
+	margin-left: 120px;
+}
+
+#login div.forgot_password {
+  float: right;
+  margin-top: -20px;
+  margin-right: 50px;
+}
+
+#login div.remember_me label {
+	display: inline;
+}
+
+#login div.session_username input, #login div.session_password input {
+	width: 260px;
+}
+
+#login div.actions {
+	margin-top: 12px;
+}
+
+
+.errorExplanation {
+	background: 7px 10px no-repeat url('/images/refinery/icons/cancel.png') #FFB1B1;
+	padding: 0px 5px 5px 30px;
+	font-weight: bold;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 1px solid red;
+}
+
+.errorExplanation h2 {
+	color: red;
+	text-transform: none;
+	display: none;
+}
+
+.errorExplanation p {
+	font-weight: normal;
+}
+
+.fieldWithErrors input, .fieldWithErrors textarea {
+	border: 1px solid red;
+	background-color: #FFECF0;
+}
