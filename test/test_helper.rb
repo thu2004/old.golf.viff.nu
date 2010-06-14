@@ -3,6 +3,11 @@ ENV["RAILS_ENV"] = "test"
 require (ENV["RAILS_ROOT"] ||= (File.expand_path(File.dirname(__FILE__)) + "/..")) + "/config/environment"
 require 'test_help'
 require 'authlogic/test_case'
+require 'webrat'
+
+Webrat.configure do |config|
+  config.mode = :rails
+end
 
 class ActiveSupport::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method
