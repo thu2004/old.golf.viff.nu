@@ -5,10 +5,12 @@
 	  	<li><%= link_to "Förmån", :controller => "/member/benefit" %></li>
 	    <br/>
 	  	<% end %>
+      <% if Option.golf_section? %>
 	  	<li><%= link_to "Spelrätter", :controller => "/member/play_right_bookings" %></li>	
 	    <br/>
 			<li><%= link_to "Tävlingar", :controller => "/member/event" %></li>
-  	<% if Option.magazine_rental? %>
+      <% end %>
+  	  <% if Option.magazine_rental? %>
   		  <br/><li><%= link_to "Tidningscirkulering", :controller => "/member/rental" %></li>	
       <% end %>
 			<% if logged_in? %>
