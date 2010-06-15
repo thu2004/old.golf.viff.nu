@@ -4,3 +4,4 @@ calendar_date_select
 formtastic
 will_paginate
 validation_reflection
+rails --version 2.3.8
