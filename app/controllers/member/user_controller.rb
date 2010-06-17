@@ -56,7 +56,17 @@ class Member::UserController < Member::ApplicationController
   
   	@users = User.find(:all).sort! do |a,b| a.name <=> b.name end
   	@users.reject! do |a| a.paid end
-  end           
+  end
+  
+  def sending_email
+      user = User.find_by_email("le.chi.thu@stericsson.com")
+	    if (user)
+        flash[:notice] = "Test sending Medlemsavgift är betalt för #{user.name}"
+        MagazineItemMailer.deliver_notify_received_payment!(current_user, user)
+      end
+      redirect_to(:controller => '/member', :action => 'index')  
+  end
+  
 protected
 
   def set_user_attributes
