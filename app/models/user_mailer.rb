@@ -15,6 +15,7 @@ protected
   def setup_email(user)
     recipients    user.email
     sent_on       Time.now
+    from          Option.get("Email")
     @body[:user] = user
   end
 

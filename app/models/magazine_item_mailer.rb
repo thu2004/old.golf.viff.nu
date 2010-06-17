@@ -42,7 +42,7 @@ class MagazineItemMailer < ActionMailer::Base
   def send_login_info(user)
     subject "#{Option.get("Section")} - inloggningsuppgift"
     body :user => user
-    from       Option.get("Email")
+    from       Option.get("email")
     sent_on    Time.now
     recipients user.email
   end
@@ -50,7 +50,7 @@ class MagazineItemMailer < ActionMailer::Base
   def notify_rental_remind(current_user, rental)
     subject "#{Option.get("Section")} - Påminnelse #{rental.magazine_item.full_name}"
     body :rental => rental
-    from       current_user.email
+    from       Option.get("email")    
     sent_on    Time.now
     recipients rental.user.email
     
@@ -61,7 +61,7 @@ class MagazineItemMailer < ActionMailer::Base
    def notify_received_payment(current_user, user)
     subject "#{Option.get("Section")} - Medlemsavgift är betalt"
     body :user => user
-    from       current_user.email
+    from       Option.get("email")    
     sent_on    Time.now
     recipients user.email  
   end
