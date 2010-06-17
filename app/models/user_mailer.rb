@@ -2,7 +2,7 @@ class UserMailer < ActionMailer::Base
 
   def reset_notification(user, request)
     setup_email(user)
-    subject         'Link to reset your password'
+    subject         'Reset your p-a-s-s-w-o-r-d'
     @body[:url]  =  url_prefix(request) + "/reset/#{user.perishable_token}"
   end
 
