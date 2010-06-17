@@ -59,8 +59,8 @@ class Member::UserController < Member::ApplicationController
   end
   
   def sending_email
-      user = User.find_by_email("le.chi.thu@stericsson.com")
-	    if (user)
+      user = User.find_by_login("thu2004")
+      if (user)
         flash[:notice] = "Test sending Medlemsavgift är betalt för #{user.name}"
         MagazineItemMailer.deliver_notify_received_payment!(current_user, user)
       end
