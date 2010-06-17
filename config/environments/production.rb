@@ -33,8 +33,8 @@ config.action_mailer.smtp_settings = {
   :port => 25,
   :domain => "mariamontessoriskolan.se" ,
   :authentication => :login,
-  :user_name =>  <%= ENV['WPSYD_USERNAME'] %> ,
-  :password =>  <%= ENV['WPSYD_PASSWORD'] %>
+  :user_name =>  ENV['WPSYD_USERNAME'] ,
+  :password =>   ENV['WPSYD_PASSWORD'] 
 }
 
 config.action_mailer.delivery_method = :smtp
