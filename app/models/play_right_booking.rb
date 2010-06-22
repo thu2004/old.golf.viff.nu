@@ -1,5 +1,6 @@
 class PlayRightBooking < ActiveRecord::Base
   default_value_for :num_of_resource, 1 
+  default_value_for :booked_on, Date.today
   has_event_calendar
 
   before_save :update_event_calendar_fields
@@ -8,6 +9,7 @@ class PlayRightBooking < ActiveRecord::Base
   belongs_to :user
   
   named_scope :forthcoming, :conditions => ['booked_on > ?', Date.today - 1.days]
+  named_scope :forthcoming_exclude_today, :conditions => ['booked_on > ?', Date.today]
   named_scope :today, :conditions => ['booked_on = ?', Date.today]
   
   validates_presence_of :booked_on

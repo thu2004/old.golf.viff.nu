@@ -28,6 +28,19 @@ class PlayRightBookingTest < ActiveSupport::TestCase
    assert_equal 2, playright.play_right_bookings.forthcoming.count
  end	
  
+ should "find correct forthcoming_exclude_today booking" do
+   start_day = Date.today
+   playright = Factory(:play_right)
+   playright.play_right_bookings.create(:booked_on => start_day)
+   assert_equal 0, playright.play_right_bookings.forthcoming_exclude_today.count
+   
+   playright.play_right_bookings.create(:booked_on => start_day - 2.days)
+   assert_equal 0, playright.play_right_bookings.forthcoming_exclude_today.count
+   
+   playright.play_right_bookings.create(:booked_on => start_day + 2.days)
+   assert_equal 1, playright.play_right_bookings.forthcoming_exclude_today.count
+ end	
+
  should "find correct today booking" do
    start_day = Date.today
    playright = Factory(:play_right)

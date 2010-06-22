@@ -33,15 +33,15 @@
   <div class="content_panel">
     <h1>Boka nytt spelrätt</h1>
     
-    <p>Här kan du boka golf banan. Du får har max två utstående bokning per gång. Här finns 
+    <p>Här kan du boka golf banan. Du får har max en utstående bokning för framtiden + en idag. Här har 
 	 <%= link_to('bokningskalender', calendar_member_play_right_booking_url(0)) %>.
 	 <%= link_to image_tag("calendar.jpg"), calendar_member_play_right_booking_url(0) %></p>
 	<p></p>
     <p/>
-    <% semantic_form_for [:member, PlayRightBooking.new] do |form| %>
+    <% semantic_form_for [:member, PlayRightBooking.new(:booked_on => Date.today)] do |form| %>
       <% form.inputs do %>
         <%= form.input :play_right, :label => 'Golfsbanan', :include_blank => false %>
-        <%= form.input :booked_on, :label => 'Datum', :start_year => Time.now.year, :end_year => Time.now.year %>
+        <%= form.input :booked_on, :label => 'Datum', :include_blank => false, :start_year => Time.now.year, :end_year => Time.now.year, :start_month => Time.now.month %>
         <%= form.input :num_of_resource, :as => :hidden, :value => "1" %>
       <% end %>
       <% form.buttons do %>
