@@ -3,11 +3,15 @@ class SessionsController < ApplicationController
   filter_parameter_logging 'password', 'password_confirmation'
 
   def create
-    @session = UserSession.new(params[:session])
-    if @session.save
+    if logged_in?
       redirect_back_or_default(member_root_url)
     else
-      render :action => 'new'
+      @session = UserSession.new(params[:session])
+      if @session.save
+        redirect_back_or_default(member_root_url)
+      else
+        render :action => 'new'
+      end
     end
   end
 
