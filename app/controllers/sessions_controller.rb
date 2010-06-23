@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
     @session = UserSession.new(params[:session])
     if @session.save
       redirect_back_or_default(member_root_url)
-      flash[:notice] = "Logged in successfully"
     else
       render :action => 'new'
     end
