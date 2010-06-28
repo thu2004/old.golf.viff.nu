@@ -63,6 +63,7 @@ class Member::UserController < Member::ApplicationController
       if (user)
         flash[:notice] = "Test sending Medlemsavgift är betalt för #{user.name}"
         MagazineItemMailer.deliver_notify_received_payment!(current_user, user)
+        user.deliver_password_reset_instructions!(request)
       end
       redirect_to(:controller => '/member', :action => 'index')  
   end
