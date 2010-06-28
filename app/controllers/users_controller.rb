@@ -54,7 +54,7 @@ class UsersController < ApplicationController
       if (user = User.find_by_email(params[:user][:email].downcase)).present?
         flash[:notice] = "An email has been sent to #{user.email} with a link to reset your password."
         user.deliver_password_reset_instructions!(request)
-        redirect_back_or_default forgot_url
+        # redirect_back_or_default forgot_url
       else
         flash[:notice] = "Sorry, #{params[:user][:email]} isn't associated with any accounts. Are you sure you typed the correct email address?"
       end
