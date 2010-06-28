@@ -22,7 +22,9 @@
     </div>
     <div class="column span-7 colborder">
       <h2>Tävlingar</h2>
-      Kommande tävling är...
+      <% @events.each do |e| %>
+        <%=  e.name %> -> <%= e.start_at.strftime("%a %Y-%m-%d")%><br/>
+      <% end %>
     </div>
      <div class="column last">
         <h2>Resultat</h2>

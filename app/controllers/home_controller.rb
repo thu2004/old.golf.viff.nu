@@ -4,6 +4,7 @@ class HomeController < ApplicationController
 
   def index
     @play_rights = PlayRight.find(:all)
+    @events = Event.find(:all)
   end
   
 protected
