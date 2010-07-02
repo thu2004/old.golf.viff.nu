@@ -1,6 +1,6 @@
 class PlayRightBooking < ActiveRecord::Base
   default_value_for :num_of_resource, 1 
-  default_value_for :booked_on, Date.today
+  default_value_for :booked_on, Date.parse(Time.zone.now.strftime("%a, %d %m %Y"))
   has_event_calendar
 
   before_save :update_event_calendar_fields
@@ -8,9 +8,9 @@ class PlayRightBooking < ActiveRecord::Base
   belongs_to :play_right
   belongs_to :user
   
-  named_scope :forthcoming, :conditions => ['booked_on > ?', Date.today - 1.days]
-  named_scope :forthcoming_exclude_today, :conditions => ['booked_on > ?', Date.today]
-  named_scope :today, :conditions => ['booked_on = ?', Date.today]
+  named_scope :forthcoming, :conditions => ['booked_on > ?', Date.today_timezone - 1.days]
+  named_scope :forthcoming_exclude_today, :conditions => ['booked_on > ?', Date.today_timezone]
+  named_scope :today, :conditions => ['booked_on = ?', Date.today_timezone]
   
   validates_presence_of :booked_on
       
@@ -31,10 +31,11 @@ class PlayRightBooking < ActiveRecord::Base
 	def name
 	 "#{play_right.name} - #{user.name}" 
 	end
-	
+  
 protected
   def update_event_calendar_fields
     self.start_at = self.end_at = self.booked_on
     self.all_day = true
   end
+
 end

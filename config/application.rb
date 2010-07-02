@@ -11,6 +11,9 @@ require File.join(File.dirname(__FILE__), 'boot')
 # Refinery is setup in config/preinitializer.rb
 require Refinery.root.join("lib", "refinery_initializer").cleanpath.to_s
 
+# my extension of ruby core
+require 'core_extensions'
+
 # Boot with Refinery. Most configuration is handled by Refinery.
 # Anything you specify here that Refinery specified internally will override Refinery.
 Refinery::Initializer.run do |config|

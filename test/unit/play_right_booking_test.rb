@@ -16,7 +16,7 @@ class PlayRightBookingTest < ActiveSupport::TestCase
  	end
  
  should "find correct forthcoming booking" do
-   start_day = Date.today
+   start_day = Date.today_timezone
    playright = Factory(:play_right)
    playright.play_right_bookings.create(:booked_on => start_day)
    assert_equal 1, playright.play_right_bookings.forthcoming.count
@@ -29,7 +29,7 @@ class PlayRightBookingTest < ActiveSupport::TestCase
  end	
  
  should "find correct forthcoming_exclude_today booking" do
-   start_day = Date.today
+   start_day = Date.today_timezone
    playright = Factory(:play_right)
    playright.play_right_bookings.create(:booked_on => start_day)
    assert_equal 0, playright.play_right_bookings.forthcoming_exclude_today.count
@@ -42,7 +42,7 @@ class PlayRightBookingTest < ActiveSupport::TestCase
  end	
 
  should "find correct today booking" do
-   start_day = Date.today
+   start_day = Date.today_timezone
    playright = Factory(:play_right)
    playright.play_right_bookings.create(:booked_on => start_day)
    assert_equal 1, playright.play_right_bookings.today.count
@@ -58,7 +58,7 @@ class PlayRightBookingTest < ActiveSupport::TestCase
  end
  
  should "set event_calendar data correctly" do
-   o1 = Factory(:play_right).play_right_bookings.new(:booked_on => Date.today)
+   o1 = Factory(:play_right).play_right_bookings.new(:booked_on => Date.today_timezone)
    assert_equal true, o1.valid?, o1.errors.full_messages 
    assert_equal nil, o1.start_at
    assert o1.save
@@ -73,7 +73,7 @@ class PlayRightBookingTest < ActiveSupport::TestCase
     assert_equal true, pr_weekend.valid?, pr_weekend.errors.full_messages
     
     # find a weekend date
-    we_date = Date.today
+    we_date = Date.today_timezone
     if (we_date.wday != 6 && we_date.wday != 0) 
       we_date = we_date + (6 - we_date.wday).days
     end
