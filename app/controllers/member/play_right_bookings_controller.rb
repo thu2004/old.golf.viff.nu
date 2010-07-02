@@ -7,8 +7,8 @@ class Member::PlayRightBookingsController < Member::ApplicationController
   end
 		
 	def calendar
-    @month = params[:month].nil? ? Date.today.month : params[:month].to_i
-    @year = params[:year].nil? ? Date.today.year : params[:year].to_i 
+    @month = params[:month].nil? ? Date.today_timezone.month : params[:month].to_i
+    @year = params[:year].nil? ? Date.today_timezone.year : params[:year].to_i 
  
     @shown_month = Date.civil(@year, @month)
 
@@ -20,7 +20,7 @@ class Member::PlayRightBookingsController < Member::ApplicationController
 	    if match_precondition?    
 	      booking = current_user.play_right_bookings.new(params[:play_right_booking])
         
-        if booking.booked_on < Date.today
+        if booking.booked_on < Date.today_timezone
           flash[:error] = "Du kan inte boka gårdagens tider"
         elsif booking.valid?
           booking.save
@@ -57,7 +57,7 @@ protected
     booking = current_user.play_right_bookings.new(params[:play_right_booking])
        
     # Today booking rule - one booking of today is allowed
-    if booking.booked_on == Date.today 
+    if booking.booked_on == Date.today_timezone 
       if current_user.play_right_bookings.today.count >= 1
         flash[:error] = "Du kan inte har mer än 1 bokning för idag."
         return false
