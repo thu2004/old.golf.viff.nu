@@ -33,6 +33,9 @@ Refinery::Initializer.run do |config|
   config.gem 'formtastic'
   config.gem 'will_paginate'
   config.gem "validation_reflection"
+  
+  # Default time zone 
+  config.time_zone = 'Stockholm'
 end
 
 # You can set things in the following file and we'll try hard not to destroy them in updates, promise.
