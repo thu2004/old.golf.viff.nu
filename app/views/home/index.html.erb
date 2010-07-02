@@ -19,6 +19,9 @@
               </p>
         <% end %>
     <%   end %>
+        Här finns 
+         <%= link_to('bokningskalendern', calendar_member_play_right_booking_url(0)) %>.
+      	 <%= link_to image_tag("calendar.jpg"), calendar_member_play_right_booking_url(0) %></p>
     </div>
     <div class="column span-7 colborder">
       <h2>Tävlingar</h2>
@@ -26,10 +29,10 @@
         <%=  e.name %> -> <%= e.start_at.strftime("%a %Y-%m-%d")%><br/>
       <% end %>
     </div>
-     <div class="column last">
-        <h2>Resultat</h2>
-        tävling resultat är...
-      </div>
+    <div class="column last">
+      <h2>Tävlingsresultat</h2>
+      <%= @page[:tour_result] %>
+    </div>
   </div>
 <% end %>
 <%= render :partial => "/shared/content_page" %>

@@ -1,6 +1,6 @@
 class Member::PlayRightBookingsController < Member::ApplicationController
 	
-  before_filter :login_required
+  before_filter :login_required, :except => [:calendar]
   
 	def index
     @play_rights = PlayRight.find(:all)
