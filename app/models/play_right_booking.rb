@@ -26,12 +26,12 @@ class PlayRightBooking < ActiveRecord::Base
 	  if (!play_right.weekend_allow)
 	    errors.add(:booked_on,"weekend is not allowed") if (booked_on.wday == 6 || booked_on.wday == 0)
 	  end
-	end
-	
-	def name
-	 "#{play_right.name} - #{user.name}" 
-	end
+  end  
   
+	def name
+	 "#{play_right.name[0..1]} - #{user.name}" 
+	end
+
 protected
   def update_event_calendar_fields
     self.start_at = self.end_at = self.booked_on
