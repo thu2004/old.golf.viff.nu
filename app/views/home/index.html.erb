@@ -5,19 +5,15 @@
         <h2>Bokning av spelrätter</h2>
         <% @play_rights.each do |pr| %>  
         <%  booking_count = pr.play_right_bookings.today.count %>
-        <%   if booking_count == 0 %>
-               <p><<%= "Idag har <strong> #{pr.name}</strong> ingen bokning" %></p>
-        <%   else %>
                <p>
-               <%   booking_msg = (booking_count == 1) ? "bokning" : "bokningar" %>
-               <%= "Idag har <strong> #{pr.name}</strong> #{booking_count} #{booking_msg}" %>
+               <%   booking_msg = (booking_count < 2) ? "bokning" : "bokningar" %>
+               <%= "Idag har <strong> #{pr.name}</strong> #{booking_count} antal #{booking_msg}" %>
                <ol>
                   <% pr.play_right_bookings.today.each do |booking| %>
                     <li><%= booking.user.name %></li>
                  <% end %>
                </ol>
               </p>
-        <% end %>
     <%   end %>
         Här finns 
          <%= link_to('bokningskalendern', calendar_member_play_right_booking_url(0)) %>.

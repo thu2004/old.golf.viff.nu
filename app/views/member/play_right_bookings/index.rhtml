@@ -56,12 +56,9 @@
     <h1>Dagens boking av spelrätter</h1>
       <% @play_rights.each do |pr| %>  
       <%  booking_count = pr.play_right_bookings.today.count %>
-      <%   if booking_count == 0 %>
-             <p><h3><%= "Idag har <strong> #{pr.name}</strong> ingen bokning" %></p></h3>
-      <%   else %>
              <p>
-             <%   booking_msg = (booking_count == 1) ? "bokning" : "bokningar" %>
-             <h3><%= "Idag har <strong> #{pr.name}</strong> #{booking_count} #{booking_msg}" %></h3>
+             <%   booking_msg = (booking_count < 2) ? "bokning" : "bokningar" %>
+             <h3><%= "Idag har <strong> #{pr.name}</strong> #{booking_count} antal #{booking_msg}" %></h3>
                 <table>
                   <tr><th>Nr</th><th>Namn</th><th>Mobil</th><th>E-Post</th></tr>
                   <% counter = 0 %>
@@ -75,7 +72,6 @@
                  <% end %>
                 </table>
             </p>
-        <% end %>
      <% end %>
     </div>
 </div> 
