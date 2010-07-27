@@ -1,0 +1,9 @@
+<h2>Log in som</h2>
+
+<% form_tag :action => 'log_in_as' do %>
+<p/>
+  <label>Välja medlem</label>
+  <%= select_tag(:user_id, options_from_collection_for_select(@users, :id, :name)) %>
+<%= submit_tag "Log in"%>
+</p>
+<% end %>
