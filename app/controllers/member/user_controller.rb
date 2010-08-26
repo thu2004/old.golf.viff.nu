@@ -1,7 +1,7 @@
 class Member::UserController < Member::ApplicationController
 	
   before_filter :login_required  
-  before_filter :verify_admin, :only => [:index, :new, :receive_payment]
+  before_filter :verify_admin, :only => [:index, :new, :receive_payment, :log_in_as]
 
   def index
 		@paid_users = User.find(:all,  :conditions => "paid = true")
@@ -68,6 +68,18 @@ class Member::UserController < Member::ApplicationController
       redirect_to(:controller => '/member', :action => 'index')  
   end
   
+  def log_in_as
+    if request.post?
+	    user = User.find(params[:user_id])
+	    if (user)
+	      flash[:notice] = "Log in som #{user.name}"
+        UserSession.create(user)
+        redirect_to(:controller => '/member', :action => 'index')  
+      end
+     end
+  
+  	@users = User.find(:all).sort! do |a,b| a.name <=> b.name end
+  end
 protected
 
   def set_user_attributes
