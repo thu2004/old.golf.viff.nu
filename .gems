@@ -1,4 +1,4 @@
-rails -v 2.3.8
+rails -v 2.3.5
 factory_girl --source http://gemcutter.org
 thoughtbot-shoulda --source http://gems.github.com
 calendar_date_select
