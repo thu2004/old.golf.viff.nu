@@ -5,7 +5,8 @@ ActionController::Routing::Routes.draw do |map|
 
   # The priority is based upon order of creation: first created -> highest priority.
   
-  if Option.golf_section?
+#  if Option.golf_section?
+  if true
     map.root :controller => "home"
   else
     map.root :controller => "member/rental"

@@ -3,7 +3,6 @@ require 'test_helper'
 class PlayRightBookingTest < ActiveSupport::TestCase
   should_belong_to :user
   should_belong_to :play_right
-#  should_validate_presence_of :num_of_resource
   should_validate_presence_of :booked_on
   
   context 'The factory' do

@@ -4,5 +4,5 @@ thoughtbot-shoulda --source http://gems.github.com
 calendar_date_select
 formtastic --ignore-dependencies
 will_paginate
-validation_reflection
+validation_reflection -v 0.3.8 
 
