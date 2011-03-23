@@ -1,3 +1,5 @@
+# coding: utf-8
+
 class Member::EventController < Member::ApplicationController
   
   before_filter :login_required

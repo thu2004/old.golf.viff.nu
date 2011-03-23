@@ -1,3 +1,5 @@
+# coding: utf-8
+
 class MagazineItemMailer < ActionMailer::Base
 
   def notify_new_user(current_user, new_user, magazine_item)

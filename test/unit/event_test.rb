@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
 	should_have_many   :event_participants

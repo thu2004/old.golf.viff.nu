@@ -1,3 +1,5 @@
+# coding: utf-8
+
 class Member::RentalController < Member::ApplicationController
   
   before_filter :login_required
@@ -208,8 +210,8 @@ class Member::RentalController < Member::ApplicationController
     
     @rentals.sort! do |a,b|
       case sort_by
-      when "name": a.user.name <=> b.user.name
-      when "magazine": a.magazine_item.full_name <=> b.magazine_item.full_name
+      when "name" then a.user.name <=> b.user.name
+      when "magazine" then a.magazine_item.full_name <=> b.magazine_item.full_name
       else
         a.rent_on <=> b.rent_on
       end
@@ -238,8 +240,8 @@ class Member::RentalController < Member::ApplicationController
     
     @users.sort! do |a,b|
       case sort_by
-      when "name": b.name <=> a.name 
-      when "rental_history": a.rental_histories.size <=> b.rental_histories.size
+      when "name" then b.name <=> a.name 
+      when "rental_history" then a.rental_histories.size <=> b.rental_histories.size
       else
         b.rentals.size <=> a.rentals.size
       end
@@ -257,9 +259,9 @@ class Member::RentalController < Member::ApplicationController
     
     @rental_histories.sort! do |a,b|
       case sort_by
-      when "user": a.user.name <=> b.user.name
-      when "return_on": b.return_on <=> a.return_on
-      when "num_day": (b.return_on - b.rent_on) <=> (a.return_on - a.rent_on)
+      when "user" then a.user.name <=> b.user.name
+      when "return_on" then b.return_on <=> a.return_on
+      when "num_day" then (b.return_on - b.rent_on) <=> (a.return_on - a.rent_on)
       else
         "#{a.magazine_item.full_name} #{a.rent_on}" <=> "#{b.magazine_item.full_name} #{b.rent_on}"
       end      

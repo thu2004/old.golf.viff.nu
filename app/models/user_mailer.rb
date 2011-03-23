@@ -1,8 +1,10 @@
+# coding: utf-8
+
 class UserMailer < ActionMailer::Base
 
   def reset_notification(user, request)
     setup_email(user)
-    subject         'Resetta ditt lösenord'
+    subject         'Återställa ditt lösenord'
     @body[:url]  =  url_prefix(request) + "/reset/#{user.perishable_token}"
   end
 

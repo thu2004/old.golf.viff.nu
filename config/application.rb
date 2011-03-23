@@ -30,13 +30,7 @@ Refinery::Initializer.run do |config|
   # Specify your application's gem requirements here. See the examples below:
   # config.gem "refinerycms-news", :lib => "news", :version => "~> 0.9.7"
   # config.gem "refinerycms-portfolio", :lib => "portfolio", :version => "~> 0.9.3.8"
-  config.gem "factory_girl", :source => "http://gemcutter.org"
-  config.gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.github.com"
-  config.gem "calendar_date_select"
-  config.gem 'formtastic'
-  config.gem 'will_paginate'
-  config.gem "validation_reflection"
-  
+    
   # Default time zone 
   config.time_zone = 'Stockholm'
 end

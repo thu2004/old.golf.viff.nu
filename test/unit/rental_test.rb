@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 class RentalTest < ActiveSupport::TestCase
   should_belong_to :magazine_item
@@ -35,6 +35,6 @@ class RentalTest < ActiveSupport::TestCase
     assert item
     rent = user.rent_magazine_item(item)
     assert_not_nil rent
-    assert rent.valid?, rent.errors.full_messages		
+    assert rent.valid?, rent.errors.full_messages.to_s		
   end
 end
